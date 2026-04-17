@@ -1,0 +1,3163 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Azamat Davronov | Elite English Academy</title>
+<link rel="stylesheet" href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+<link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap)" rel="stylesheet">
+<style>
+/* =============================================
+   CSS VARIABLES & RESET
+   ============================================= */
+:root {
+  --cyan: #00f2ff;
+  --cyan2: #00b8cc;
+  --purple: #7000ff;
+  --purple2: #5500cc;
+  --pink: #ff007a;
+  --bg: #020a12;
+  --bg2: #050f1a;
+  --card: #08131d;
+  --glass: rgba(5,15,28,0.75);
+  --border: rgba(0,180,220,0.1);
+  --border2: rgba(0,242,255,0.25);
+  --text: #ffffff;
+  --dim: #7a95a8;
+  --dim2: #4a6070;
+  --font: 'DM Sans', sans-serif;
+  --head: 'Syne', sans-serif;
+  --tr: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  --shadow: 0 20px 60px rgba(0,0,0,0.6);
+  --glow: 0 0 30px rgba(0,242,255,0.15);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;outline:none;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font);
+  overflow-x:hidden;
+  line-height:1.6;
+  position:relative;
+}
+
+/* =============================================
+   ANIMATED BACKGROUND
+   ============================================= */
+.bg-canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+.bg-canvas::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 15%, rgba(0,100,180,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 80%, rgba(0,50,120,0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(0,20,60,0.3) 0%, transparent 70%);
+  animation: bgPulse 12s ease-in-out infinite alternate;
+}
+.bg-canvas::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle 400px at var(--mx,50%) var(--my,50%), rgba(0,180,255,0.05), transparent 60%);
+  animation: bgFloat 18s linear infinite;
+}
+@keyframes bgPulse{
+  0%{opacity:0.6;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.05)}
+  100%{opacity:0.7;transform:scale(1)}
+}
+@keyframes bgFloat{
+  0%{transform:translate(0,0)}
+  25%{transform:translate(-3%,2%)}
+  50%{transform:translate(2%,-3%)}
+  75%{transform:translate(3%,1%)}
+  100%{transform:translate(0,0)}
+}
+
+.bg-dots{
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(circle, rgba(0,180,220,0.06) 1px, transparent 1px);
+  background-size:40px 40px;
+  animation: dotsDrift 30s linear infinite;
+}
+@keyframes dotsDrift{
+  0%{transform:translate(0,0)}
+  100%{transform:translate(40px,40px)}
+}
+
+/* =============================================
+   UTILITIES
+   ============================================= */
+h1,h2,h3,h4{font-family:var(--head);letter-spacing:-0.5px}
+p{color:var(--dim)}
+a{text-decoration:none;color:inherit;transition:var(--tr)}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#1a3040;border-radius:3px}
+
+.container{max-width:1280px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border:1px solid var(--border);
+  border-radius:20px;
+}
+.glass-cyan{
+  background:rgba(0,30,50,0.7);
+  backdrop-filter:blur(24px);
+  border:1px solid var(--border2);
+  border-radius:20px;
+}
+.sec-title{font-size:clamp(2rem,4vw,3rem);text-align:center;margin-bottom:14px;color:#fff}
+.sec-title span{
+  background:linear-gradient(135deg,var(--cyan),#7ad4ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.sec-sub{text-align:center;color:var(--dim);margin-bottom:56px;font-size:0.98rem}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 30px;border-radius:100px;font-weight:600;font-size:0.95rem;
+  cursor:pointer;border:none;transition:var(--tr);position:relative;overflow:hidden;
+  font-family:var(--font);
+}
+.btn::before{
+  content:'';position:absolute;inset:0;
+  background:rgba(255,255,255,0.08);
+  opacity:0;transition:var(--tr);
+}
+.btn:hover::before{opacity:1}
+.btn-primary{
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  color:#000;font-weight:700;
+  box-shadow:0 8px 24px rgba(0,180,255,0.2);
+}
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 34px rgba(0,180,255,0.35);
+  color:#fff;
+}
+.btn-outline{
+  background:rgba(0,180,220,0.06);
+  color:#fff;border:1px solid var(--border2);
+}
+.btn-outline:hover{
+  border-color:var(--cyan);
+  background:rgba(0,180,220,0.12);
+  transform:translateY(-2px);
+}
+.btn-sm{padding:9px 20px;font-size:0.85rem}
+.btn-danger{
+  background:rgba(255,50,50,0.15);
+  color:#ff6b6b;
+  border:1px solid rgba(255,50,50,0.3);
+}
+.btn-danger:hover{
+  background:rgba(255,50,50,0.25);
+  border-color:#ff6b6b;
+}
+.btn-success{
+  background:rgba(0,200,100,0.15);
+  color:#4ade80;
+  border:1px solid rgba(0,200,100,0.3);
+}
+.btn-success:hover{
+  background:rgba(0,200,100,0.25);
+  border-color:#4ade80;
+}
+
+/* INPUTS */
+.input-group{margin-bottom:18px}
+.input-label{display:block;color:var(--dim);margin-bottom:7px;font-size:0.85rem}
+.input-field{
+  width:100%;padding:14px 18px;
+  background:rgba(0,30,50,0.6);
+  border:1px solid var(--border);border-radius:12px;
+  color:#fff;font-size:0.95rem;font-family:var(--font);
+  transition:var(--tr);
+}
+.input-field:focus{border-color:var(--cyan);background:rgba(0,60,90,0.4)}
+.input-field::placeholder{color:var(--dim2)}
+textarea.input-field{resize:vertical;min-height:110px}
+select.input-field{cursor:pointer}
+select.input-field option{background:#0a1825;color:#fff}
+
+/* FILE UPLOAD */
+.file-upload-box{
+  width:100%;min-height:180px;border:2px dashed var(--border);
+  border-radius:16px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;
+  cursor:pointer;transition:var(--tr);position:relative;overflow:hidden;color:var(--dim);
+}
+.file-upload-box:hover{border-color:var(--cyan);color:var(--cyan)}
+.file-upload-box input[type=file]{
+  position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;
+}
+.file-upload-box .preview-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;border-radius:14px;display:none;
+}
+.file-upload-box.has-img .preview-img{display:block}
+.file-upload-box.has-img .upload-placeholder{display:none}
+.upload-placeholder{
+  display:flex;flex-direction:column;align-items:center;
+  gap:8px;pointer-events:none;text-align:center;padding:0 16px;
+}
+.upload-icon{font-size:2.5rem;color:var(--cyan);opacity:0.7}
+.upload-text{font-weight:600;color:#fff}
+.upload-hint{font-size:0.8rem;color:var(--dim2)}
+
+/* MODAL */
+.modal{
+  position:fixed;inset:0;
+  background:rgba(0,5,15,0.88);
+  backdrop-filter:blur(18px);
+  z-index:10000;display:none;
+  align-items:center;justify-content:center;padding:16px;
+}
+.modal.open{display:flex}
+.modal-box{
+  background:rgba(4,12,22,0.96);
+  border:1px solid var(--border2);
+  border-radius:28px;padding:44px;
+  width:100%;max-width:640px;max-height:92vh;
+  overflow-y:auto;position:relative;
+  animation:modalIn 0.38s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow:0 30px 80px rgba(0,0,0,0.7),0 0 40px rgba(0,180,255,0.08);
+}
+@keyframes modalIn{
+  from{opacity:0;transform:scale(0.88) translateY(30px)}
+  to{opacity:1;transform:none}
+}
+.modal-close{
+  position:absolute;top:18px;right:18px;
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(0,180,220,0.08);border:1px solid var(--border);
+  color:var(--dim);font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:var(--tr);
+}
+.modal-close:hover{color:#fff;transform:rotate(90deg);border-color:var(--cyan)}
+.modal-title{
+  font-size:1.5rem;font-family:var(--head);color:#fff;
+  margin-bottom:24px;text-align:center;
+}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:28px;left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:rgba(4,15,28,0.95);
+  border:1px solid var(--cyan);
+  color:#fff;padding:13px 26px;
+  border-radius:100px;font-weight:600;
+  font-size:0.88rem;z-index:99999;
+  opacity:0;transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  white-space:nowrap;
+  box-shadow:0 8px 30px rgba(0,180,255,0.2);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.error{border-color:#ff6b6b;box-shadow:0 8px 30px rgba(255,100,100,0.2)}
+.toast.success{border-color:#4ade80;box-shadow:0 8px 30px rgba(0,200,100,0.2)}
+
+/* LOADING OVERLAY */
+.loading-overlay{
+  position:fixed;inset:0;
+  background:rgba(2,10,18,0.95);
+  z-index:100000;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:20px;
+}
+.loading-spinner{
+  width:50px;height:50px;
+  border:3px solid var(--border);
+  border-top-color:var(--cyan);
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{color:var(--dim);font-size:0.9rem}
+
+/* =============================================
+   HEADER / NAV
+   ============================================= */
+header{
+  position:fixed;top:0;width:100%;z-index:1000;
+  padding:24px 0;transition:var(--tr);
+}
+header.scrolled{
+  padding:12px 0;
+  background:rgba(2,10,18,0.92);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(24px);
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+.header-inner{display:flex;justify-content:space-between;align-items:center}
+.logo{
+  font-family:var(--head);font-size:1.35rem;font-weight:800;
+  color:#fff;letter-spacing:-0.5px;
+}
+.logo span{color:var(--cyan)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-link{
+  font-size:0.92rem;font-weight:500;color:var(--dim);
+  position:relative;cursor:pointer;transition:var(--tr);
+}
+.nav-link:hover,.nav-link.active{color:#fff}
+.nav-link::after{
+  content:'';position:absolute;bottom:-5px;left:0;
+  width:0;height:2px;background:var(--cyan);
+  border-radius:2px;transition:var(--tr);
+}
+.nav-link:hover::after,.nav-link.active::after{width:100%}
+
+/* BURGER */
+.burger{display:none;cursor:pointer;flex-direction:column;gap:5px;z-index:1001}
+.burger span{width:25px;height:2px;background:#fff;border-radius:2px;transition:var(--tr);display:block}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.open span:nth-child(2){opacity:0;width:0}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* Mobile Nav Overlay */
+.mobile-nav-overlay{
+  position:fixed;inset:0;background:rgba(2,8,18,0.98);
+  backdrop-filter:blur(20px);z-index:998;
+  display:none;flex-direction:column;align-items:center;justify-content:center;gap:32px;
+  padding:80px 20px 40px;
+}
+.mobile-nav-overlay.open{display:flex}
+.mobile-nav-overlay .nav-link{font-size:1.5rem;font-weight:700;font-family:var(--head)}
+
+/* =============================================
+   HERO SECTION
+   ============================================= */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding-top:110px;padding-bottom:80px;
+  position:relative;z-index:1;
+}
+.hero-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:50px;align-items:center;
+}
+.hero-content h1{
+  font-size:clamp(2.6rem,5vw,4.8rem);
+  line-height:1.08;margin-bottom:22px;color:#fff;
+}
+.hero-content h1 .h1-highlight{
+  display:inline;
+  background:linear-gradient(135deg,var(--cyan),#a0e8ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+#hero-desc-display{font-size:1.1rem;margin-bottom:38px;max-width:500px;color:var(--dim)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+
+/* HERO IMAGE */
+.hero-img-wrap{position:relative;display:flex;justify-content:center;align-items:center}
+.hero-photo-container{
+  position:relative;width:100%;max-width:400px;
+}
+.hero-photo{
+  width:100%;height:480px;object-fit:cover;
+  border-radius:30px;display:block;
+  box-shadow:0 30px 70px rgba(0,0,0,0.7),0 0 50px rgba(0,180,255,0.1);
+  border:2px solid var(--border2);
+  animation:heroFloat 7s ease-in-out infinite;
+  position:relative;z-index:2;
+}
+@keyframes heroFloat{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  33%{transform:translateY(-10px) rotate(0.4deg)}
+  66%{transform:translateY(-6px) rotate(-0.3deg)}
+}
+
+.hero-photo-glow{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:110%;height:110%;
+  background:radial-gradient(ellipse, rgba(0,180,255,0.12), transparent 65%);
+  border-radius:40px;
+  animation:glowPulse 4s ease-in-out infinite;
+  z-index:1;
+}
+@keyframes glowPulse{
+  0%,100%{opacity:0.6;transform:translate(-50%,-50%) scale(1)}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.04)}
+}
+
+/* BADGES */
+.hero-badges{
+  position:absolute;inset:0;
+  pointer-events:none;z-index:10;
+}
+.h-badge{
+  position:absolute;
+  padding:10px 18px;border-radius:100px;
+  background:rgba(0,10,25,0.9);
+  backdrop-filter:blur(12px);
+  border:1px solid var(--border2);
+  display:flex;align-items:center;gap:9px;
+  font-weight:700;font-size:0.82rem;color:#fff;
+  pointer-events:auto;z-index:10;
+  box-shadow:0 8px 24px rgba(0,0,0,0.5),var(--glow);
+}
+.h-badge i{color:var(--cyan);font-size:0.9rem}
+.h-badge-1{top:6%;left:-10px;animation:badge1 5s ease-in-out infinite}
+.h-badge-2{bottom:20%;right:-10px;animation:badge2 6s ease-in-out infinite}
+.h-badge-3{bottom:-12px;left:20%;animation:badge3 7s ease-in-out infinite}
+@keyframes badge1{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes badge2{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes badge3{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* =============================================
+   TEST MODAL
+   ============================================= */
+#test-modal .modal-box{max-width:700px}
+.test-header-bar{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:30px;
+}
+.test-step-label{
+  color:var(--cyan);font-weight:700;font-size:0.85rem;
+  letter-spacing:2px;text-transform:uppercase;
+}
+.test-score-display{
+  color:var(--dim);font-size:0.85rem;
+  background:rgba(0,180,220,0.08);padding:6px 14px;
+  border-radius:100px;border:1px solid var(--border);
+}
+.test-q-text{
+  font-size:1.5rem;font-family:var(--head);
+  color:#fff;margin-bottom:28px;line-height:1.3;
+}
+.test-opts-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  list-style:none;margin-bottom:28px;
+}
+.test-opt{
+  padding:16px 20px;border:1px solid var(--border);
+  border-radius:14px;cursor:pointer;transition:var(--tr);
+  font-size:0.95rem;font-weight:500;color:var(--dim);
+  background:rgba(0,30,50,0.5);text-align:left;
+  font-family:var(--font);
+}
+.test-opt:hover{border-color:var(--cyan);color:#fff;background:rgba(0,100,150,0.2)}
+.test-opt.correct{
+  border-color:#00e676;background:rgba(0,230,118,0.1);
+  color:#00e676;pointer-events:none;
+}
+.test-opt.wrong{
+  border-color:#ff5555;background:rgba(255,85,85,0.1);
+  color:#ff5555;pointer-events:none;
+}
+.test-opt.disabled{pointer-events:none;opacity:0.7}
+.test-prog-wrap{
+  width:100%;height:5px;background:rgba(0,180,220,0.1);
+  border-radius:3px;overflow:hidden;
+}
+.test-prog-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  transition:width 0.4s ease;border-radius:3px;
+}
+
+/* Result card */
+.test-result-card{text-align:center;padding:20px 0}
+.result-emoji{font-size:4.5rem;margin-bottom:16px;display:block}
+.result-score{font-size:2.5rem;font-weight:800;font-family:var(--head);color:#fff;margin-bottom:8px}
+.result-level{font-size:1.25rem;margin-bottom:10px}
+.result-desc{color:var(--dim);font-size:0.95rem;margin-bottom:28px}
+
+.lead-form-title{
+  font-size:1.1rem;font-family:var(--head);color:#fff;
+  margin-bottom:20px;text-align:center;
+}
+.lead-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.lead-form-full{grid-column:1/-1}
+
+/* =============================================
+   COURSES SECTION
+   ============================================= */
+#courses{padding:100px 0;position:relative;z-index:1}
+.courses-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.course-card{
+  padding:46px 40px;display:flex;flex-direction:column;
+  border-radius:24px;position:relative;transition:var(--tr);
+  background:rgba(5,15,28,0.8);
+  border:1px solid var(--border);
+}
+.course-card:hover{
+  transform:translateY(-8px);
+  border-color:var(--border2)!important;
+  box-shadow:0 20px 50px rgba(0,0,0,0.4),var(--glow);
+}
+.course-card.popular{border-color:rgba(0,200,255,0.2)!important}
+.popular-tag{
+  position:absolute;top:16px;right:16px;
+  padding:6px 14px;background:linear-gradient(135deg,var(--cyan),var(--cyan2));
+  color:#000;border-radius:100px;
+  font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;
+}
+.course-name{font-size:1.7rem;margin-bottom:8px;color:#fff}
+.course-price-row{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
+.course-price{font-size:3rem;font-weight:800;line-height:1;color:#fff}
+.course-price-unit{font-size:0.95rem;color:var(--dim)}
+.course-period{color:var(--dim2);font-size:0.85rem;margin-bottom:30px}
+.course-feats{list-style:none;flex:1;margin-bottom:32px}
+.course-feat{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 0;border-bottom:1px solid rgba(0,180,220,0.07);
+  color:var(--dim);font-size:0.92rem;
+}
+.course-feat:last-child{border:none}
+.course-feat i{color:var(--cyan);font-size:0.78rem;flex-shrink:0}
+
+/* =============================================
+   SLIDERS SECTION
+   ============================================= */
+.slider-section{padding:100px 0;position:relative;z-index:1}
+.slider-wrap{position:relative}
+.slider-track{
+  display:flex;gap:20px;overflow-x:auto;
+  scroll-snap-type:x mandatory;padding:8px 2px 16px;
+  scrollbar-width:none;list-style:none;
+}
+.slider-track::-webkit-scrollbar{display:none}
+.slide-card{
+  flex:0 0 320px;scroll-snap-align:start;
+  border-radius:20px;overflow:hidden;
+  transition:var(--tr);background:var(--card);
+  border:1px solid var(--border);
+}
+.slide-card:hover{
+  border-color:var(--border2);
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.4),var(--glow);
+}
+.slide-img-box{width:100%;height:240px;overflow:hidden;cursor:pointer;position:relative}
+.slide-img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
+.slide-card:hover .slide-img{transform:scale(1.07)}
+.slide-img-overlay{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:20px 16px 12px;
+  background:linear-gradient(to top,rgba(2,8,18,0.97),transparent);
+}
+.slide-badge{
+  display:inline-block;padding:4px 11px;border-radius:100px;
+  font-size:0.72rem;font-weight:700;margin-bottom:6px;
+}
+.badge-cyan{background:rgba(0,200,255,0.12);color:var(--cyan)}
+.badge-purple{background:rgba(100,0,220,0.15);color:#a78bfa}
+.badge-green{background:rgba(0,200,100,0.12);color:#34d399}
+.slide-img-title{font-size:1rem;font-weight:700;color:#fff}
+.slide-img-meta{font-size:0.78rem;color:var(--dim);margin-top:2px}
+.slide-body{padding:14px 16px}
+.slide-desc{font-size:0.85rem;color:var(--dim);margin-bottom:12px;line-height:1.55}
+
+/* COMMENTS */
+.comments-area{border-top:1px solid var(--border);padding-top:12px}
+.comments-list{
+  max-height:160px;overflow-y:auto;
+  margin-bottom:10px;padding-right:4px;
+}
+.comments-list::-webkit-scrollbar{width:3px}
+.comments-list::-webkit-scrollbar-thumb{background:#1a3040}
+.comment-item{
+  background:rgba(0,30,50,0.5);border:1px solid rgba(0,180,220,0.08);
+  padding:8px 12px;border-radius:10px;margin-bottom:6px;font-size:0.82rem;
+}
+.c-name{font-weight:700;color:var(--cyan);margin-right:6px}
+.c-text{color:var(--dim)}
+.c-date{color:var(--dim2);font-size:0.72rem;float:right;margin-left:6px}
+.no-comment{
+  color:var(--dim2);font-size:0.82rem;
+  text-align:center;padding:12px 0;
+}
+.comment-form{display:flex;gap:6px;align-items:center}
+.c-name-input,.c-text-input{
+  padding:9px 13px;background:rgba(0,30,50,0.6);
+  border:1px solid var(--border);border-radius:100px;
+  color:#fff;font-size:0.82rem;font-family:var(--font);
+  transition:var(--tr);
+}
+.c-name-input{width:100px;flex-shrink:0}
+.c-text-input{flex:1}
+.c-name-input:focus,.c-text-input:focus{border-color:var(--cyan)}
+.c-name-input::placeholder,.c-text-input::placeholder{color:var(--dim2)}
+.c-send-btn{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  border:none;color:#000;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.85rem;transition:var(--tr);
+}
+.c-send-btn:hover{transform:scale(1.1)}
+
+/* Slider arrows */
+.sl-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:42px;height:42px;
+  background:rgba(0,10,25,0.8);border:1px solid var(--border2);
+  border-radius:50%;color:var(--cyan);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:5;transition:var(--tr);font-size:0.95rem;
+}
+.sl-arrow:hover{background:var(--cyan);color:#000;border-color:var(--cyan)}
+.sl-prev{left:-21px}
+.sl-next{right:-21px}
+
+/* ZOOM MODAL */
+#zoom-modal .modal-box{
+  background:transparent;border:none;padding:10px;
+  max-width:88vw;display:flex;align-items:center;justify-content:center;
+}
+.zoomed-img{
+  max-width:100%;max-height:86vh;
+  border-radius:14px;
+  box-shadow:0 0 60px rgba(0,180,255,0.25);
+  border:2px solid rgba(255,255,255,0.12);
+}
+
+/* =============================================
+   WHY US
+   ============================================= */
+#why{padding:100px 0;position:relative;z-index:1}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{
+  padding:36px 28px;text-align:center;
+  border-radius:20px;transition:var(--tr);
+  background:rgba(0,20,40,0.6);
+  border:1px solid var(--border);
+}
+.why-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--border2);
+  box-shadow:var(--glow);
+}
+.why-icon{
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(0,180,220,0.12),rgba(100,0,220,0.12));
+  border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;font-size:1.5rem;color:var(--cyan);
+}
+.why-card h3{font-size:1.2rem;margin-bottom:10px;color:#fff}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer{
+  padding:70px 0 28px;
+  border-top:1px solid var(--border);
+  background:rgba(1,6,14,0.9);
+  position:relative;z-index:1;
+}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-logo{font-family:var(--head);font-size:1.5rem;font-weight:800;color:#fff;display:inline-block;margin-bottom:14px}
+.footer-logo span{color:var(--cyan)}
+.footer-about{color:var(--dim);font-size:0.88rem;max-width:340px;line-height:1.65}
+.footer-heading{
+  color:#fff;font-size:0.82rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:2.5px;margin-bottom:16px;
+}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:9px}
+.footer-links a{color:var(--dim);font-size:0.88rem;transition:var(--tr)}
+.footer-links a:hover{color:var(--cyan);padding-left:4px}
+.footer-contact-item{
+  display:flex;align-items:center;gap:10px;
+  color:var(--dim);font-size:0.88rem;margin-bottom:10px;
+}
+.footer-contact-item i{color:var(--cyan);width:14px}
+.footer-bottom{
+  text-align:center;color:rgba(255,255,255,0.1);
+  font-size:0.78rem;padding-top:28px;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+}
+.admin-trigger{
+  color:rgba(0,180,220,0.15);font-size:0.72rem;
+  cursor:pointer;transition:var(--tr);
+}
+.admin-trigger:hover{color:var(--cyan)}
+
+/* FLOATING BUTTONS */
+.floating-btns{
+  position:fixed;bottom:26px;right:26px;
+  display:flex;flex-direction:column;gap:11px;z-index:900;
+}
+.float-btn{
+  width:54px;height:54px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.35rem;color:#fff;
+  box-shadow:0 8px 24px rgba(0,0,0,0.5);
+  transition:var(--tr);position:relative;
+}
+.float-btn::before{
+  content:'';position:absolute;inset:-3px;
+  border-radius:50%;border:2px solid transparent;
+  animation:floatRing 3s ease-in-out infinite;
+}
+.float-btn:hover{transform:scale(1.1) translateY(-4px)}
+.float-tg{background:linear-gradient(135deg,#0088cc,#005a88)}
+.float-call{background:linear-gradient(135deg,#00c851,#007a32)}
+.float-tg::before{border-color:rgba(0,136,204,0.3)}
+.float-call::before{border-color:rgba(0,200,80,0.3)}
+@keyframes floatRing{
+  0%,100%{transform:scale(1);opacity:0.6}
+  50%{transform:scale(1.3);opacity:0}
+}
+
+/* =============================================
+   ADMIN PANEL
+   ============================================= */
+#admin-panel{
+  position:fixed;inset:0;
+  background:#020a12;
+  z-index:99999;display:none;overflow-y:auto;
+}
+#admin-panel.open{display:block}
+.admin-top-bar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(2,8,18,0.96);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  padding:16px 0;margin-bottom:24px;
+}
+.admin-top-inner{display:flex;justify-content:space-between;align-items:center}
+.admin-logo{font-family:var(--head);font-size:1.3rem;font-weight:800;color:#fff}
+.admin-logo span{color:var(--cyan)}
+.admin-tabs-wrap{
+  overflow-x:auto;scrollbar-width:none;
+  margin-bottom:28px;
+}
+.admin-tabs-wrap::-webkit-scrollbar{display:none}
+.admin-tabs{
+  display:flex;gap:6px;list-style:none;
+  background:rgba(0,20,40,0.6);border:1px solid var(--border);
+  border-radius:100px;padding:4px;width:max-content;
+}
+.admin-tab{
+  padding:9px 20px;border-radius:100px;
+  color:var(--dim);cursor:pointer;
+  font-weight:500;white-space:nowrap;font-size:0.875rem;
+  transition:var(--tr);
+}
+.admin-tab.active{
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  color:#000;font-weight:700;
+}
+.admin-tab:hover:not(.active){color:#fff;background:rgba(0,180,220,0.08)}
+.tab-pane{display:none;animation:fadeIn 0.3s ease}
+.tab-pane.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ag2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ag1{display:grid;grid-template-columns:1fr;gap:20px}
+.a-card{
+  padding:26px;border-radius:20px;
+  background:rgba(0,18,35,0.7);border:1px solid var(--border);
+}
+.a-card-title{
+  font-size:1rem;color:#fff;margin-bottom:18px;
+  display:flex;align-items:center;gap:10px;font-weight:600;
+  font-family:var(--head);
+}
+.a-card-title i{color:var(--cyan)}
+.a-divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+
+/* Admin list items */
+.a-item{
+  background:rgba(0,30,50,0.5);border:1px solid var(--border);
+  border-radius:12px;padding:13px 15px;margin-bottom:9px;
+  display:flex;align-items:center;gap:12px;
+  transition:var(--tr);
+}
+.a-item:hover{border-color:var(--border2)}
+.a-thumb{
+  width:50px;height:50px;border-radius:10px;
+  object-fit:cover;flex-shrink:0;
+  border:1px solid var(--border);
+}
+.a-item-info{flex:1;min-width:0}
+.a-item-title{
+  font-weight:600;color:#fff;font-size:0.875rem;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.a-item-meta{color:var(--dim2);font-size:0.78rem;margin-top:2px}
+.a-item-acts{display:flex;gap:6px;flex-shrink:0}
+.icon-btn{
+  width:32px;height:32px;border-radius:8px;border:none;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:var(--tr);font-size:0.85rem;font-family:var(--font);
+}
+.del-btn{background:rgba(255,50,50,0.08);color:#ff5555}
+.del-btn:hover{background:rgba(255,50,50,0.22)}
+.edit-btn-icon{background:rgba(0,200,255,0.08);color:var(--cyan)}
+.edit-btn-icon:hover{background:rgba(0,200,255,0.2)}
+
+/* Admin comments */
+.a-comment{
+  background:rgba(0,25,45,0.6);border:1px solid var(--border);
+  border-radius:12px;padding:13px 15px;margin-bottom:8px;
+}
+.a-comment-header{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:6px;
+}
+.a-comment-source{font-size:0.72rem;color:var(--cyan);font-weight:700}
+.a-comment-meta{font-size:0.78rem;color:var(--dim);margin-top:2px}
+.a-comment-text{font-size:0.85rem;color:#ccc;line-height:1.5}
+
+/* Admin leads */
+.a-lead{
+  background:rgba(0,25,45,0.6);border:1px solid var(--border);
+  border-radius:12px;padding:16px 18px;margin-bottom:10px;
+  transition:var(--tr);
+}
+.a-lead:hover{border-color:var(--border2)}
+.a-lead-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.a-lead-name{font-weight:700;color:#fff;font-size:0.95rem;font-family:var(--head)}
+.a-lead-date{color:var(--dim2);font-size:0.75rem}
+.a-lead-details{display:flex;gap:16px;flex-wrap:wrap}
+.a-lead-detail{
+  display:flex;align-items:center;gap:6px;
+  font-size:0.82rem;color:var(--dim);
+}
+.a-lead-detail i{color:var(--cyan);font-size:0.75rem}
+.a-lead-level{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:4px 11px;border-radius:100px;font-size:0.75rem;font-weight:700;
+}
+.level-beginner{background:rgba(255,85,85,0.12);color:#ff8585}
+.level-intermediate{background:rgba(255,187,51,0.12);color:#ffd47a}
+.level-advanced{background:rgba(0,230,118,0.12);color:#4ade80}
+.a-lead-score{
+  font-weight:700;color:var(--cyan);
+  background:rgba(0,180,220,0.1);
+  padding:4px 11px;border-radius:100px;font-size:0.78rem;
+}
+.a-lead-actions{margin-top:10px;display:flex;gap:8px;align-items:center}
+.handled-badge{
+  padding:4px 12px;border-radius:100px;font-size:0.75rem;font-weight:700;
+  background:rgba(0,230,118,0.1);color:#4ade80;
+  border:1px solid rgba(0,230,118,0.2);
+}
+.not-handled-badge{
+  padding:4px 12px;border-radius:100px;font-size:0.75rem;font-weight:700;
+  background:rgba(255,187,51,0.1);color:#ffd47a;
+  border:1px solid rgba(255,187,51,0.2);
+}
+
+/* Stats cards */
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat-card{
+  background:rgba(0,20,40,0.7);border:1px solid var(--border);
+  border-radius:16px;padding:20px;text-align:center;
+  transition:var(--tr);
+}
+.stat-card:hover{border-color:var(--border2)}
+.stat-num{font-size:2rem;font-weight:800;font-family:var(--head);color:#fff;line-height:1}
+.stat-label{font-size:0.78rem;color:var(--dim);margin-top:6px}
+.stat-card i{font-size:1.3rem;color:var(--cyan);margin-bottom:10px}
+
+/* Login modal */
+#login-modal .modal-box{max-width:400px;text-align:center;background:rgba(1,8,18,0.98)}
+.login-logo{font-family:var(--head);font-size:1.9rem;font-weight:800;color:#fff;margin-bottom:8px}
+.login-logo span{color:var(--cyan)}
+.login-sub{color:var(--dim);margin-bottom:32px;font-size:0.88rem}
+.login-err{
+  color:#ff5555;font-size:0.82rem;margin-bottom:14px;
+  display:none;background:rgba(255,50,50,0.08);
+  padding:10px;border-radius:10px;border:1px solid rgba(255,50,50,0.2);
+}
+
+.empty-state{text-align:center;padding:36px;color:var(--dim)}
+.empty-state i{font-size:2.4rem;margin-bottom:12px;color:rgba(0,180,220,0.15);display:block}
+.empty-state p{font-size:0.88rem}
+
+/* =============================================
+   INITIAL TEST PAGE
+   ============================================= */
+#initial-test-page{
+  min-height:100vh;display:none;
+  align-items:center;justify-content:center;
+  padding:100px 0 60px;position:relative;z-index:1;
+}
+.test-page-box{
+  max-width:700px;width:100%;
+  padding:50px 44px;text-align:center;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media(max-width:1100px){
+  .container{padding:0 24px}
+  .hero-inner{gap:36px}
+  .hero-photo{height:420px}
+  .admin-stats{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .sl-prev{left:-8px}
+  .sl-next{right:-8px}
+}
+
+@media(max-width:900px){
+  html{font-size:15px}
+  .hero-inner{grid-template-columns:1fr;text-align:center;gap:50px}
+  .hero-img-wrap{order:-1;display:flex;justify-content:center}
+  .hero-photo-container{max-width:340px}
+  .hero-photo{height:380px}
+  .hero-btns{justify-content:center}
+  #hero-desc-display{margin:0 auto 38px}
+  .h-badge-1,.h-badge-2,.h-badge-3{font-size:0.75rem;padding:9px 14px}
+  .h-badge-1{left:-5px}
+  .h-badge-2{right:-5px}
+  .courses-grid{grid-template-columns:1fr}
+  .ag2{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .burger{display:flex}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-about{max-width:100%}
+  .footer-bottom{justify-content:center}
+  .lead-form-grid{grid-template-columns:1fr}
+  .admin-stats{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:640px){
+  html{font-size:14px}
+  .container{padding:0 14px}
+  .modal-box{padding:28px 20px}
+  .test-page-box{padding:36px 20px}
+  .test-opts-grid{grid-template-columns:1fr}
+  .slide-card{flex:0 0 270px}
+  .hero-photo{height:300px}
+  .hero-photo-container{max-width:280px}
+  .h-badge-1,.h-badge-2,.h-badge-3{display:none}
+  .course-card{padding:32px 24px}
+  .why-grid{grid-template-columns:1fr}
+  .floating-btns{bottom:14px;right:14px}
+  .float-btn{width:48px;height:48px;font-size:1.2rem}
+  .admin-tab{padding:8px 14px;font-size:0.8rem}
+  .admin-stats{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:400px){
+  html{font-size:13px}
+  .hero-content h1{font-size:2.2rem}
+  .test-page-box{padding:28px 14px}
+  .modal-box{padding:22px 14px;border-radius:20px}
+  .slide-card{flex:0 0 240px}
+  .admin-stats{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<!-- LOADING OVERLAY -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">Ma'lumotlar yuklanmoqda...</div>
+</div>
+
+<!-- BG CANVAS -->
+<div class="bg-canvas">
+  <div class="bg-dots"></div>
+</div>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="container header-inner">
+    <a href="#" class="logo">AZAMAT<span>.DAVRONOV</span></a>
+    <ul class="nav-links" id="nav-links-desktop">
+      <li><a href="#hero" class="nav-link active" onclick="scrollToSec('hero')">Asosiy</a></li>
+      <li><a href="#courses" class="nav-link" onclick="scrollToSec('courses')">Kurslar</a></li>
+      <li><a href="#results" class="nav-link" onclick="scrollToSec('results')">Natijalar</a></li>
+      <li><a href="#yangiliklar" class="nav-link" onclick="scrollToSec('yangiliklar')">Yangiliklar</a></li>
+      <li><a href="#process" class="nav-link" onclick="scrollToSec('process')">Dars Jarayoni</a></li>
+    </ul>
+    <div class="burger" id="burger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav-overlay" id="mobile-nav">
+  <a href="#hero" class="nav-link" onclick="closeMobileNav();scrollToSec('hero')">Asosiy</a>
+  <a href="#courses" class="nav-link" onclick="closeMobileNav();scrollToSec('courses')">Kurslar</a>
+  <a href="#results" class="nav-link" onclick="closeMobileNav();scrollToSec('results')">Natijalar</a>
+  <a href="#yangiliklar" class="nav-link" onclick="closeMobileNav();scrollToSec('yangiliklar')">Yangiliklar</a>
+  <a href="#process" class="nav-link" onclick="closeMobileNav();scrollToSec('process')">Dars Jarayoni</a>
+  <button class="btn btn-outline" onclick="closeMobileNav()">Yopish</button>
+</div>
+
+<!-- INITIAL TEST PAGE -->
+<section id="initial-test-page" style="display:none;flex-direction:column">
+  <div class="container" style="display:flex;justify-content:center">
+    <div class="glass test-page-box">
+      <div id="itp-step-label" class="test-step-label" style="margin-bottom:16px">Savol 1 / 10</div>
+      <div id="itp-q-text" class="test-q-text"></div>
+      <ul id="itp-opts" class="test-opts-grid" style="margin-bottom:28px"></ul>
+      <div class="test-prog-wrap"><div class="test-prog-fill" id="itp-prog" style="width:0"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HERO -->
+<section id="hero" style="position:relative;z-index:1">
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <h1 id="hero-title-el">
+        Ingliz tilini <span class="h1-highlight">Professional</span> darajada o'rganing
+      </h1>
+      <p id="hero-desc-display">Ingliz tili o'qitishda 10 yildan ortiq tajriba. 1000 dan ortiq muvaffaqiyatli talabalar va xalqaro metodika asosida natija kafolatlanadi.</p>
+      <div class="hero-btns">
+        <button class="btn btn-primary" onclick="openTestModal()"><i class="fas fa-rocket"></i> Testni Boshlash</button>
+        <a href="#courses" class="btn btn-outline"><i class="fas fa-book-open"></i> Kurslar</a>
+      </div>
+    </div>
+
+    <div class="hero-img-wrap">
+      <div class="hero-photo-container">
+        <div class="hero-photo-glow"></div>
+        <div class="hero-badges">
+          <div class="h-badge h-badge-1" id="badge-1">
+            <i class="fas fa-certificate"></i> <span>CEFR C1 Certified</span>
+          </div>
+          <div class="h-badge h-badge-2" id="badge-2">
+            <i class="fas fa-users"></i> <span>1000+ Talabalar</span>
+          </div>
+          <div class="h-badge h-badge-3" id="badge-3">
+            <i class="fas fa-star"></i> <span>10 Yillik Tajriba</span>
+          </div>
+        </div>
+        <img id="hero-photo"
+          src="[images.unsplash.com](https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=800)"
+          class="hero-photo" alt="Ustoz Azamat Davronov">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="container">
+    <h2 class="sec-title">Bizning <span>Kurslar</span></h2>
+    <p class="sec-sub">O'zingizga mos dars rejasini tanlang — har bir kurs natija kafolatlanadi</p>
+    <div class="courses-grid" id="courses-container"></div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results" class="slider-section">
+  <div class="container">
+    <h2 class="sec-title">Bizning <span>Natijalar</span></h2>
+    <p class="sec-sub">O'quvchilarimizning xalqaro sertifikatlari va real yutuqlari</p>
+    <div class="slider-wrap">
+      <div class="sl-arrow sl-prev" onclick="slideScroll('results-track',-1)"><i class="fas fa-chevron-left"></i></div>
+      <div class="sl-arrow sl-next" onclick="slideScroll('results-track',1)"><i class="fas fa-chevron-right"></i></div>
+      <ul class="slider-track" id="results-track"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- YANGILIKLAR -->
+<section id="yangiliklar" class="slider-section">
+  <div class="container">
+    <h2 class="sec-title">So'nggi <span>Yangiliklar</span></h2>
+    <p class="sec-sub">Akademiya hayotidagi muhim voqealar va e'lonlar</p>
+    <div class="slider-wrap">
+      <div class="sl-arrow sl-prev" onclick="slideScroll('news-track',-1)"><i class="fas fa-chevron-left"></i></div>
+      <div class="sl-arrow sl-next" onclick="slideScroll('news-track',1)"><i class="fas fa-chevron-right"></i></div>
+      <ul class="slider-track" id="news-track"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="slider-section">
+  <div class="container">
+    <h2 class="sec-title">Dars <span>Jarayoni</span></h2>
+    <p class="sec-sub">Akademiyamizdagi interaktiv darslarimizdan real lavhalar</p>
+    <div class="slider-wrap">
+      <div class="sl-arrow sl-prev" onclick="slideScroll('process-track',-1)"><i class="fas fa-chevron-left"></i></div>
+      <div class="sl-arrow sl-next" onclick="slideScroll('process-track',1)"><i class="fas fa-chevron-right"></i></div>
+      <ul class="slider-track" id="process-track"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="slider-section" style="padding-top:60px">
+  <div class="container">
+    <h2 class="sec-title">Nega Aynan <span>Ustoz Azamat</span>?</h2>
+    <p class="sec-sub" id="why-desc-display">Biz faqat qog'ozdagi bilimga emas, balki real muloqot va natijaga e'tibor beramiz.</p>
+    <div class="why-grid" id="why-grid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">AZAMAT<span>.DAVRONOV</span></div>
+        <p class="footer-about">Elite English Academy — CEFR C1 sertifikatlangan ustoz rahbarligida sifatli ingliz tili ta'limi. Natija kafolatlanadi.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Sahifalar</div>
+        <ul class="footer-links">
+          <li><a href="#hero">Asosiy</a></li>
+          <li><a href="#courses">Kurslar</a></li>
+          <li><a href="#results">Natijalar</a></li>
+          <li><a href="#yangiliklar">Yangiliklar</a></li>
+          <li><a href="#process">Dars Jarayoni</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Bog'lanish</div>
+        <div class="footer-contact-item" id="footer-phone"><i class="fas fa-phone-alt"></i> +998 99 123 45 67</div>
+        <div class="footer-contact-item" id="footer-telegram"><i class="fab fa-telegram-plane"></i> @azamat_davronov</div>
+        <div class="footer-contact-item" id="footer-email"><i class="fas fa-envelope"></i>t.me/Davronov_Azamat</div>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> Qashqadaryo viloyati, Chiroqchi tumani, Sarbon O'quv Markazi</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="admin-trigger" onclick="openLoginModal()">🔒 Admin Panel</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating-btns">
+  <a href="tel:+998912265566" class="float-btn float-call" id="float-call">
+    <i class="fas fa-phone-alt"></i>
+  </a>
+  <a href="https://t.me/azamat_davronov" target="_blank" class="float-btn float-tg" id="float-tg">
+    <i class="fab fa-telegram-plane"></i>
+  </a>
+</div>
+
+
+<!-- TEST MODAL -->
+<div class="modal" id="test-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('test-modal')">&times;</button>
+    <div id="tm-content"></div>
+  </div>
+</div>
+
+<!-- ZOOM MODAL -->
+<div class="modal" id="zoom-modal" onclick="if(event.target.id==='zoom-modal')closeModal('zoom-modal')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('zoom-modal')">&times;</button>
+    <img src="" id="zoom-img" class="zoomed-img" alt="Zoom">
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="login-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('login-modal')">&times;</button>
+    <div class="login-logo">AZAMAT<span>.DAVRONOV</span></div>
+    <p class="login-sub">Admin panelga xavfsiz kirish</p>
+    <div class="input-group">
+      <label class="input-label">Foydalanuvchi nomi</label>
+      <input type="text" id="login-user" class="input-field" placeholder="Username"
+        onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="input-group">
+      <label class="input-label">Parol</label>
+      <input type="password" id="login-pass" class="input-field" placeholder="••••••••"
+        onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="login-err" id="login-err"><i class="fas fa-exclamation-circle"></i> Foydalanuvchi nomi yoki parol xato!</div>
+    <button class="btn btn-primary" style="width:100%" onclick="doLogin()">
+      <i class="fas fa-unlock-alt"></i> Tizimga Kirish
+    </button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admin-panel">
+  <div class="admin-top-bar">
+    <div class="container admin-top-inner">
+      <div class="admin-logo">ADM<span>IN</span> PANEL</div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-success btn-sm" onclick="exportData()">
+          <i class="fas fa-download"></i> Export
+        </button>
+        <button class="btn btn-outline btn-sm" onclick="logoutAdmin()">
+          <i class="fas fa-sign-out-alt"></i> Chiqish
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- TABS -->
+    <div class="admin-tabs-wrap">
+      <ul class="admin-tabs" id="admin-tabs">
+        <li class="admin-tab active" data-tab="t-dashboard"><i class="fas fa-chart-pie"></i> Bosh Sahifa</li>
+        <li class="admin-tab" data-tab="t-leads"><i class="fas fa-user-plus"></i> Arizalar</li>
+        <li class="admin-tab" data-tab="t-hero">Hero</li>
+        <li class="admin-tab" data-tab="t-courses">Kurslar</li>
+        <li class="admin-tab" data-tab="t-results">Natijalar</li>
+        <li class="admin-tab" data-tab="t-news">Yangiliklar</li>
+        <li class="admin-tab" data-tab="t-process">Dars Jarayoni</li>
+        <li class="admin-tab" data-tab="t-why">Nega Biz</li>
+        <li class="admin-tab" data-tab="t-comments">Izohlar</li>
+        <li class="admin-tab" data-tab="t-settings">Sozlamalar</li>
+      </ul>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="tab-pane active" id="t-dashboard">
+      <div class="admin-stats" id="admin-stats"></div>
+      <div class="ag2">
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-user-clock"></i> So'nggi Arizalar</div>
+          <div id="dash-recent-leads"></div>
+        </div>
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-comment-dots"></i> So'nggi Izohlar</div>
+          <div id="dash-recent-comments"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEADS -->
+    <div class="tab-pane" id="t-leads">
+      <div class="ag1">
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-filter"></i> Arizalarni Filtrlash</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+            <select id="leads-filter-level" class="input-field" style="width:auto;flex:1"
+              onchange="renderLeadsList()">
+              <option value="">Barcha darajalar</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+            <select id="leads-filter-handled" class="input-field" style="width:auto;flex:1"
+              onchange="renderLeadsList()">
+              <option value="">Barcha holatlar</option>
+              <option value="false">Yangi</option>
+              <option value="true">Ko'rib chiqilgan</option>
+            </select>
+            <button class="btn btn-danger btn-sm" onclick="clearAllLeads()">
+              <i class="fas fa-trash"></i> Barchasini o'chirish
+            </button>
+          </div>
+          <div id="admin-leads-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="tab-pane" id="t-hero">
+      <div class="ag1">
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-home"></i> Hero Bo'limi Ma'lumotlari</div>
+          <div class="input-group">
+            <label class="input-label">Sarlavha matni</label>
+            <input type="text" id="a-hero-title" class="input-field" placeholder="Sarlavha">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Tavsif matni</label>
+            <textarea id="a-hero-desc" class="input-field" placeholder="Tavsif..."></textarea>
+          </div>
+          <div class="input-group">
+            <label class="input-label">Ustoz rasmi (yuklang)</label>
+            <div class="file-upload-box" id="hero-upload-box">
+              <div class="upload-placeholder">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <span class="upload-text">Rasm tanlang yoki sudrab tashlang</span>
+                <small class="upload-hint">JPG · PNG · WEBP · CHEKSIZ HAJM</small>
+              </div>
+              <img src="" class="preview-img" id="hero-img-prev" alt="">
+              <input type="file" accept="image/*"
+                onchange="handleFileUpload(this,'hero-upload-box','hero-img-prev','heroPhoto')">
+            </div>
+          </div>
+          <div class="ag2" style="margin-bottom:20px">
+            <div class="input-group" style="margin:0">
+              <label class="input-label">Badge 1 matni</label>
+              <input type="text" id="a-badge1" class="input-field" placeholder="CEFR C1 Certified">
+            </div>
+            <div class="input-group" style="margin:0">
+              <label class="input-label">Badge 2 matni</label>
+              <input type="text" id="a-badge2" class="input-field" placeholder="1000+ Talabalar">
+            </div>
+          </div>
+          <div class="input-group">
+            <label class="input-label">Badge 3 matni</label>
+            <input type="text" id="a-badge3" class="input-field" placeholder="10 Yillik Tajriba">
+          </div>
+          <button class="btn btn-primary" style="width:100%" onclick="saveHero()">
+            <i class="fas fa-save"></i> Saqlash
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- COURSES -->
+    <div class="tab-pane" id="t-courses">
+      <div class="ag2">
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-graduation-cap"></i> Standard Kurs</div>
+          <div class="input-group">
+            <label class="input-label">Kurs Nomi</label>
+            <input type="text" id="c-std-name" class="input-field" placeholder="Standard">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Narxi (so'm)</label>
+            <input type="text" id="c-std-price" class="input-field" placeholder="500.000">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Xususiyatlar (har biri yangi qatorda)</label>
+            <textarea id="c-std-feats" class="input-field"
+              placeholder="Haftada 6 kun dars&#10;2 soat davomiylik&#10;Reading & Writing Focus"></textarea>
+          </div>
+          <button class="btn btn-primary" style="width:100%" onclick="saveCourse('std')">
+            <i class="fas fa-save"></i> Saqlash
+          </button>
+        </div>
+        <div class="a-card" style="border-color:var(--border2)">
+          <div class="a-card-title"><i class="fas fa-fire"></i> Intensive Kurs</div>
+          <div class="input-group">
+            <label class="input-label">Kurs Nomi</label>
+            <input type="text" id="c-int-name" class="input-field" placeholder="Intensive">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Narxi (so'm)</label>
+            <input type="text" id="c-int-price" class="input-field" placeholder="800.000">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Xususiyatlar (har biri yangi qatorda)</label>
+            <textarea id="c-int-feats" class="input-field"
+              placeholder="Haftada 6 kun intensiv&#10;3 soat dars&#10;Speaking with Azamat&#10;24/7 Mentor Support"></textarea>
+          </div>
+          <button class="btn btn-primary" style="width:100%" onclick="saveCourse('int')">
+            <i class="fas fa-save"></i> Saqlash
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="tab-pane" id="t-results">
+      <div class="ag2">
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-plus-circle"></i> Yangi Natija Qo'shish</div>
+          <div class="input-group">
+            <label class="input-label">Sertifikat Rasmi</label>
+            <div class="file-upload-box" id="res-upload-box">
+              <div class="upload-placeholder">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <span class="upload-text">Rasm tanlang</span>
+                <small class="upload-hint">CHEKSIZ HAJM</small>
+              </div>
+              <img src="" class="preview-img" id="res-img-prev" alt="">
+              <input type="file" accept="image/*"
+                onchange="handleFileUpload(this,'res-upload-box','res-img-prev','resPhoto')">
+            </div>
+          </div>
+          <div class="input-group">
+            <label class="input-label">Natija (IELTS skori, CEFR darajasi)</label>
+            <input type="text" id="res-title" class="input-field" placeholder="IELTS 8.0">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Talaba Ismi va Familiyasi</label>
+            <input type="text" id="res-student" class="input-field" placeholder="To'liq ismi">
+          </div>
+          <button class="btn btn-primary" style="width:100%" onclick="addResult()">
+            <i class="fas fa-plus"></i> Natija Qo'shish
+          </button>
+        </div>
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-list-ul"></i> Barcha Natijalar</div>
+          <div id="admin-results-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEWS -->
+    <div class="tab-pane" id="t-news">
+      <div class="ag2">
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-plus-circle"></i> Yangi Yangilik Qo'shish</div>
+          <div class="input-group">
+            <label class="input-label">Yangilik Rasmi</label>
+            <div class="file-upload-box" id="news-upload-box">
+              <div class="upload-placeholder">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <span class="upload-text">Rasm tanlang</span>
+                <small class="upload-hint">CHEKSIZ HAJM</small>
+              </div>
+              <img src="" class="preview-img" id="news-img-prev" alt="">
+              <input type="file" accept="image/*"
+                onchange="handleFileUpload(this,'news-upload-box','news-img-prev','newsPhoto')">
+            </div>
+          </div>
+          <div class="input-group">
+            <label class="input-label">Sarlavha</label>
+            <input type="text" id="news-title-input" class="input-field" placeholder="Yangilik sarlavhasi">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Tavsif</label>
+            <textarea id="news-desc-input" class="input-field" placeholder="Qisqacha tavsif..."></textarea>
+          </div>
+          <button class="btn btn-primary" style="width:100%" onclick="addNews()">
+            <i class="fas fa-plus"></i> Yangilik Qo'shish
+          </button>
+        </div>
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-list-ul"></i> Barcha Yangiliklar</div>
+          <div id="admin-news-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROCESS -->
+    <div class="tab-pane" id="t-process">
+      <div class="ag2">
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-plus-circle"></i> Yangi Lavha Qo'shish</div>
+          <div class="input-group">
+            <label class="input-label">Dars Lavhasi Rasmi</label>
+            <div class="file-upload-box" id="proc-upload-box">
+              <div class="upload-placeholder">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <span class="upload-text">Rasm tanlang</span>
+                <small class="upload-hint">CHEKSIZ HAJM</small>
+              </div>
+              <img src="" class="preview-img" id="proc-img-prev" alt="">
+              <input type="file" accept="image/*"
+                onchange="handleFileUpload(this,'proc-upload-box','proc-img-prev','procPhoto')">
+            </div>
+          </div>
+          <div class="input-group">
+            <label class="input-label">Sarlavha</label>
+            <input type="text" id="proc-title-input" class="input-field" placeholder="Dars lavhasi sarlavhasi">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Tavsif</label>
+            <textarea id="proc-desc-input" class="input-field" placeholder="Dars haqida qisqa ma'lumot..."></textarea>
+          </div>
+          <button class="btn btn-primary" style="width:100%" onclick="addProcess()">
+            <i class="fas fa-plus"></i> Lavha Qo'shish
+          </button>
+        </div>
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-list-ul"></i> Barcha Lavhalar</div>
+          <div id="admin-process-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHY -->
+    <div class="tab-pane" id="t-why">
+      <div class="ag1">
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-star"></i> "Nega Biz" Bo'limi</div>
+          <div class="input-group">
+            <label class="input-label">Asosiy Tavsif Matni</label>
+            <textarea id="a-why-desc" class="input-field" placeholder="Asosiy tavsif..."></textarea>
+          </div>
+          <button class="btn btn-primary" style="margin-bottom:24px" onclick="saveWhy()">
+            <i class="fas fa-save"></i> Tavsifni Saqlash
+          </button>
+          <hr class="a-divider">
+          <div class="a-card-title"><i class="fas fa-plus"></i> Yangi Ustunlik Qo'shish</div>
+          <div class="ag2" style="margin-bottom:14px">
+            <div class="input-group" style="margin:0">
+              <label class="input-label">Icon klass (fas fa-...)</label>
+              <input type="text" id="why-icon-input" class="input-field" placeholder="fa-rocket">
+            </div>
+            <div class="input-group" style="margin:0">
+              <label class="input-label">Sarlavha</label>
+              <input type="text" id="why-title-input" class="input-field" placeholder="Kafolatli Natija">
+            </div>
+          </div>
+          <div class="input-group">
+            <label class="input-label">Qisqa Tavsif</label>
+            <input type="text" id="why-pdesc-input" class="input-field" placeholder="Qisqa tavsif matni">
+          </div>
+          <button class="btn btn-primary" style="width:100%;margin-bottom:24px" onclick="addWhyPoint()">
+            <i class="fas fa-plus"></i> Qo'shish
+          </button>
+          <hr class="a-divider">
+          <div class="a-card-title"><i class="fas fa-list"></i> Mavjud Ustunliklar</div>
+          <div id="admin-why-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMMENTS -->
+    <div class="tab-pane" id="t-comments">
+      <div class="ag1">
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-comments"></i> Barcha Izohlar</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+            <select id="comments-filter-type" class="input-field" style="width:auto;flex:1"
+              onchange="renderAdminComments()">
+              <option value="">Barcha turlar</option>
+              <option value="results">Natijalar</option>
+              <option value="news">Yangiliklar</option>
+              <option value="process">Dars Jarayoni</option>
+            </select>
+          </div>
+          <div id="admin-all-comments"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="tab-pane" id="t-settings">
+      <div class="ag2">
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-cog"></i> Sayt Sozlamalari</div>
+          <div class="input-group">
+            <label class="input-label">Telefon Raqam</label>
+            <input type="text" id="s-phone" class="input-field" placeholder="+998 99 123 45 67">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Telegram Username</label>
+            <input type="text" id="s-telegram" class="input-field" placeholder="@azamat_davronov">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Email</label>
+            <input type="email" id="s-email" class="input-field" placeholder="info@davronov.uz">
+          </div>
+          <button class="btn btn-primary" onclick="saveSettings()">
+            <i class="fas fa-save"></i> Saqlash
+          </button>
+        </div>
+        <div class="a-card">
+          <div class="a-card-title"><i class="fas fa-key"></i> Parolni O'zgartirish</div>
+          <div class="input-group">
+            <label class="input-label">Joriy Parol</label>
+            <input type="password" id="s-old-pass" class="input-field" placeholder="••••••••">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Yangi Parol</label>
+            <input type="password" id="s-new-pass" class="input-field" placeholder="••••••••">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Yangi Parolni Tasdiqlash</label>
+            <input type="password" id="s-confirm-pass" class="input-field" placeholder="••••••••">
+          </div>
+          <button class="btn btn-primary" onclick="changePassword()">
+            <i class="fas fa-lock"></i> Parolni O'zgartirish
+          </button>
+        </div>
+      </div>
+      <div class="a-card" style="margin-top:20px">
+        <div class="a-card-title"><i class="fas fa-database"></i> Ma'lumotlar Bazasi</div>
+        <p style="color:var(--dim);margin-bottom:16px;font-size:0.9rem">
+          IndexedDB yordamida cheksiz ma'lumot saqlash. Refresh qilsangiz ham ma'lumotlar o'chmaydi.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-danger btn-sm" onclick="resetAllData()">
+            <i class="fas fa-exclamation-triangle"></i> Barcha Ma'lumotlarni Tozalash
+          </button>
+          <button class="btn btn-success btn-sm" onclick="exportData()">
+            <i class="fas fa-download"></i> JSON Export
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:60px"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* =============================================
+   INDEXEDDB - CHEKSIZ MA'LUMOT SAQLASH TIZIMI
+   ============================================= */
+const DB_NAME = "EliteAcademyDB";
+const DB_VERSION = 1;
+const STORE_NAME = "siteData";
+const DATA_KEY = "main_data";
+
+let db = null;
+
+// Default ma'lumotlar
+const DEFAULT_DATA = {
+  hero: {
+    title: "Ingliz tilini Professional darajada o'rganing",
+    desc: "Ingliz tili o'qitishda 10 yildan ortiq tajriba. 1000 dan ortiq muvaffaqiyatli talabalar va xalqaro metodika asosida natija kafolatlanadi.",
+    photo: "[images.unsplash.com](https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=800)",
+    badge1: "CEFR C1 Certified",
+    badge2: "1000+ Talabalar",
+    badge3: "10 Yillik Tajriba"
+  },
+  courses: {
+    std: {
+      name: "Standard",
+      price: "500.000",
+      feats: [
+        "Haftada 6 kun dars",
+        "2 soat davomiylik",
+        "Reading & Writing Focus",
+        "Haftalik Mock Test",
+        "Online materiallar"
+      ]
+    },
+    int: {
+      name: "Intensive",
+      price: "800.000",
+      feats: [
+        "Haftada 6 kun intensiv",
+        "3 soat dars",
+        "Speaking with Azamat",
+        "24/7 Mentor Support",
+        "Individual yo'riqnoma",
+        "Kafolatlangan natija"
+      ]
+    }
+  },
+  why: {
+    desc: "Biz faqat qog'ozdagi bilimga emas, balki real muloqot va natijaga e'tibor beramiz. 1000 dan ortiq muvaffaqiyatli talabalar bu bizning metodikamiz to'g'riligidan dalolat beradi.",
+    points: [
+      { icon:"fa-certificate", title:"C1 Daraja", desc:"Xalqaro sifat kafolati" },
+      { icon:"fa-rocket", title:"Kafolatli Natija", desc:"100% samarali metodika" },
+      { icon:"fa-brain", title:"Individual Yondashuv", desc:"Har talabaga alohida e'tibor" },
+      { icon:"fa-clock", title:"Qulay Jadval", desc:"Ish va o'qish bilan uyg'un" },
+      { icon:"fa-globe", title:"Xalqaro Metodika", desc:"IELTS, CEFR standartlari" },
+      { icon:"fa-users", title:"Kuchli Jamoa", desc:"Tajribali o'qituvchilar" }
+    ]
+  },
+  results: [],
+  news: [],
+  process: [],
+  leads: [],
+  settings: {
+    phone: "+998 91 226 55 66 ",
+    telegram: "@azamat_davronov",
+    email: "t.me: Davronov_Azamat"
+  },
+  auth: { username:"Azamat", password:"Azamat12345" }
+};
+
+// Global DB ob'ekt
+let DB = JSON.parse(JSON.stringify(DEFAULT_DATA));
+
+// Temp file storage
+const tempFiles = {};
+
+/* =============================================
+   INDEXEDDB FUNKSIYALARI
+   ============================================= */
+function openDatabase() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+    
+    request.onerror = () => {
+      console.error("IndexedDB ochishda xato:", request.error);
+      reject(request.error);
+    };
+    
+    request.onsuccess = () => {
+      db = request.result;
+      console.log("✅ IndexedDB muvaffaqiyatli ochildi");
+      resolve(db);
+    };
+    
+    request.onupgradeneeded = (event) => {
+      const database = event.target.result;
+      if (!database.objectStoreNames.contains(STORE_NAME)) {
+        database.createObjectStore(STORE_NAME);
+        console.log("✅ Object store yaratildi");
+      }
+    };
+  });
+}
+
+async function saveToIndexedDB() {
+  try {
+    if (!db) await openDatabase();
+    
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction([STORE_NAME], "readwrite");
+      const store = transaction.objectStore(STORE_NAME);
+      const request = store.put(DB, DATA_KEY);
+      
+      request.onsuccess = () => {
+        console.log("✅ Ma'lumotlar IndexedDB ga saqlandi");
+        resolve(true);
+      };
+      
+      request.onerror = () => {
+        console.error("❌ Saqlashda xato:", request.error);
+        reject(request.error);
+      };
+    });
+  } catch (error) {
+    console.error("❌ IndexedDB xatosi:", error);
+    // Fallback: LocalStorage
+    try {
+      const dataStr = JSON.stringify(DB);
+      if (dataStr.length < 5000000) {
+        localStorage.setItem('site_backup', dataStr);
+      }
+    } catch (e) {}
+  }
+}
+
+async function loadFromIndexedDB() {
+  try {
+    if (!db) await openDatabase();
+    
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction([STORE_NAME], "readonly");
+      const store = transaction.objectStore(STORE_NAME);
+      const request = store.get(DATA_KEY);
+      
+      request.onsuccess = () => {
+        if (request.result) {
+          // Mavjud ma'lumotlarni default bilan birlashtir
+          DB = mergeDeep(JSON.parse(JSON.stringify(DEFAULT_DATA)), request.result);
+          console.log("✅ Ma'lumotlar IndexedDB dan yuklandi");
+        } else {
+          console.log("ℹ️ IndexedDB da ma'lumot topilmadi, default ishlatilmoqda");
+          DB = JSON.parse(JSON.stringify(DEFAULT_DATA));
+        }
+        resolve(DB);
+      };
+      
+      request.onerror = () => {
+        console.error("❌ Yuklashda xato:", request.error);
+        reject(request.error);
+      };
+    });
+  } catch (error) {
+    console.error("❌ IndexedDB xatosi:", error);
+    // Fallback: LocalStorage
+    try {
+      const backup = localStorage.getItem('site_backup');
+      if (backup) {
+        DB = mergeDeep(JSON.parse(JSON.stringify(DEFAULT_DATA)), JSON.parse(backup));
+      }
+    } catch (e) {}
+    return DB;
+  }
+}
+
+// Chuqur birlashtirish funksiyasi
+function mergeDeep(target, source) {
+  if (!source) return target;
+  
+  for (const key in source) {
+    if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+      if (!target[key]) target[key] = {};
+      mergeDeep(target[key], source[key]);
+    } else {
+      target[key] = source[key];
+    }
+  }
+  return target;
+}
+
+/* =============================================
+   UTILITIES
+   ============================================= */
+function genId() { 
+  return Date.now() + Math.floor(Math.random() * 9999); 
+}
+
+function showToast(msg, type = 'default', dur = 3000) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show';
+  if (type === 'error') t.classList.add('error');
+  if (type === 'success') t.classList.add('success');
+  setTimeout(() => t.classList.remove('show', 'error', 'success'), dur);
+}
+
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  if (!document.getElementById('admin-panel').classList.contains('open')) {
+    document.body.style.overflow = '';
+  }
+}
+
+function escapeHtml(s) {
+  const d = document.createElement('div');
+  d.appendChild(document.createTextNode(s || ''));
+  return d.innerHTML;
+}
+
+function formatDate() {
+  return new Date().toLocaleDateString('uz-UZ', {
+    year: 'numeric', month: 'short', day: 'numeric'
+  });
+}
+
+function scrollToSec(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
+function hideLoading() {
+  const overlay = document.getElementById('loading-overlay');
+  if (overlay) {
+    overlay.style.opacity = '0';
+    setTimeout(() => overlay.style.display = 'none', 300);
+  }
+}
+
+/* =============================================
+   FILE UPLOAD - CHEKSIZ HAJM
+   ============================================= */
+function handleFileUpload(input, boxId, prevId, storeKey) {
+  const file = input.files[0];
+  if (!file) return;
+  
+  // Rasm formatini tekshirish
+  if (!file.type.startsWith('image/')) {
+    showToast('❌ Faqat rasm fayllarini yuklash mumkin!', 'error');
+    return;
+  }
+  
+  const reader = new FileReader();
+  
+  reader.onload = function(e) {
+    const data = e.target.result;
+    const prev = document.getElementById(prevId);
+    if (prev) prev.src = data;
+    document.getElementById(boxId).classList.add('has-img');
+    tempFiles[storeKey] = data;
+    showToast('✅ Rasm yuklandi!', 'success');
+  };
+  
+  reader.onerror = function() {
+    showToast('❌ Rasm yuklashda xato!', 'error');
+  };
+  
+  reader.readAsDataURL(file);
+}
+
+/* =============================================
+   HEADER / NAV
+   ============================================= */
+function toggleMobileNav() {
+  const nav = document.getElementById('mobile-nav');
+  const b = document.getElementById('burger');
+  const isOpen = nav.classList.contains('open');
+  if (isOpen) { 
+    closeMobileNav(); 
+  } else {
+    nav.classList.add('open');
+    b.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeMobileNav() {
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+window.addEventListener('scroll', () => {
+  const h = document.getElementById('header');
+  window.scrollY > 80 ? h.classList.add('scrolled') : h.classList.remove('scrolled');
+  highlightNav();
+});
+
+function highlightNav() {
+  const ids = ['hero', 'courses', 'results', 'yangiliklar', 'process', 'why'];
+  const scrollY = window.scrollY + 180;
+  ids.forEach(id => {
+    const sec = document.getElementById(id);
+    if (!sec) return;
+    const links = document.querySelectorAll(`.nav-link[href="#${id}"]`);
+    const active = sec.offsetTop <= scrollY && sec.offsetTop + sec.offsetHeight > scrollY;
+    links.forEach(l => l.classList.toggle('active', active));
+  });
+}
+
+/* =============================================
+   10-QUESTION TEST DATA
+   ============================================= */
+const TEST_QUESTIONS = [
+  { q: "I ___ to school every day.", opts: ["go", "goes", "going", "gone"], correct: 0 },
+  { q: "She ___ English very well.", opts: ["speak", "speaks", "speaking", "to speak"], correct: 1 },
+  { q: "They ___ playing football right now.", opts: ["is", "am", "are", "were"], correct: 2 },
+  { q: "___ you like coffee?", opts: ["Do", "Does", "Are", "Is"], correct: 0 },
+  { q: "I ___ my homework yesterday.", opts: ["do", "done", "did", "doing"], correct: 2 },
+  { q: "We ___ to Paris next summer.", opts: ["will go", "go", "went", "goes"], correct: 0 },
+  { q: "He is ___ student in the class.", opts: ["a good", "an good", "the good", "good a"], correct: 0 },
+  { q: "This bag is ___ than that one.", opts: ["heavy", "heavier", "heaviest", "more heavy"], correct: 1 },
+  { q: "I have ___ visited Japan.", opts: ["never", "ever", "yet", "just"], correct: 0 },
+  { q: "___ she working overtime today?", opts: ["Is", "Does", "Do", "Has"], correct: 0 }
+];
+
+/* =============================================
+   TEST STATE
+   ============================================= */
+let testModalState = {
+  current: 0,
+  score: 0,
+  locked: false,
+  courseType: ''
+};
+
+function openTestModal(courseType) {
+  testModalState = { current: 0, score: 0, locked: false, courseType: courseType || '' };
+  renderTestModalQ();
+  openModal('test-modal');
+}
+
+function renderTestModalQ() {
+  const q = TEST_QUESTIONS[testModalState.current];
+  const pct = (testModalState.current / TEST_QUESTIONS.length) * 100;
+  document.getElementById('tm-content').innerHTML = `
+    <div class="test-header-bar">
+      <div class="test-step-label">Savol ${testModalState.current + 1} / ${TEST_QUESTIONS.length}</div>
+      <div class="test-score-display"><i class="fas fa-star" style="color:var(--cyan)"></i> ${testModalState.score} ball</div>
+    </div>
+    <div class="test-q-text">${q.q}</div>
+    <ul class="test-opts-grid" id="tm-opts">
+      ${q.opts.map((o, i) => `
+        <li class="test-opt" onclick="answerTestModal(${i})">${o}</li>
+      `).join('')}
+    </ul>
+    <div class="test-prog-wrap">
+      <div class="test-prog-fill" style="width:${pct}%"></div>
+    </div>
+  `;
+}
+
+function answerTestModal(idx) {
+  if (testModalState.locked) return;
+  testModalState.locked = true;
+  const q = TEST_QUESTIONS[testModalState.current];
+  const opts = document.querySelectorAll('#tm-opts .test-opt');
+  opts.forEach(o => { o.classList.add('disabled'); o.onclick = null; });
+  if (idx === q.correct) {
+    opts[idx].classList.add('correct');
+    testModalState.score++;
+  } else {
+    opts[idx].classList.add('wrong');
+    if (opts[q.correct]) opts[q.correct].classList.add('correct');
+  }
+  setTimeout(() => {
+    testModalState.current++;
+    if (testModalState.current < TEST_QUESTIONS.length) {
+      testModalState.locked = false;
+      renderTestModalQ();
+    } else {
+      showTestModalResult();
+    }
+  }, 850);
+}
+
+function showTestModalResult() {
+  const s = testModalState.score;
+  let level, levelClass, emoji, msg;
+  if (s <= 3) {
+    level = 'Beginner'; levelClass = 'level-beginner'; emoji = '📚';
+    msg = "Boshlang'ich kursimiz siz uchun ideal!";
+  } else if (s <= 7) {
+    level = 'Intermediate'; levelClass = 'level-intermediate'; emoji = '🎯';
+    msg = "Standard yoki Intensive kursimiz sizga mos keladi!";
+  } else {
+    level = 'Advanced'; levelClass = 'level-advanced'; emoji = '🏆';
+    msg = "Intensive kursimizda yanada ko'tarilishingiz mumkin!";
+  }
+
+  document.getElementById('tm-content').innerHTML = `
+    <div class="test-result-card">
+      <span class="result-emoji">${emoji}</span>
+      <div class="result-score">${s} / 10</div>
+      <div class="result-level">
+        Darajangiz: <span class="a-lead-level ${levelClass}">${level}</span>
+      </div>
+      <div class="result-desc">${msg}</div>
+      <div style="background:rgba(0,100,150,0.15);border:1px solid var(--border2);border-radius:16px;padding:24px;margin-top:10px">
+        <div class="lead-form-title">
+          <i class="fas fa-user-plus" style="color:var(--cyan)"></i>
+          Ro'yxatdan o'tish uchun ma'lumotlaringizni qoldiring
+        </div>
+        <div class="lead-form-grid">
+          <div class="input-group" style="margin:0 0 14px">
+            <label class="input-label">Ismingiz *</label>
+            <input type="text" id="lead-name" class="input-field" placeholder="To'liq ismingiz">
+          </div>
+          <div class="input-group" style="margin:0 0 14px">
+            <label class="input-label">Yoshingiz *</label>
+            <input type="number" id="lead-age" class="input-field" placeholder="Masalan: 22" min="5" max="70">
+          </div>
+          <div class="input-group lead-form-full" style="margin:0 0 14px">
+            <label class="input-label">Telefon Raqamingiz *</label>
+            <input type="tel" id="lead-phone" class="input-field" placeholder="+998 90 000 00 00">
+          </div>
+        </div>
+        <button class="btn btn-primary" style="width:100%" onclick="submitLead('${level}',${s})">
+          <i class="fas fa-paper-plane"></i> Arizani Yuborish
+        </button>
+      </div>
+    </div>
+    <div class="test-prog-wrap" style="margin-top:20px">
+      <div class="test-prog-fill" style="width:100%;background:linear-gradient(90deg,var(--cyan),#00e676)"></div>
+    </div>
+  `;
+}
+
+async function submitLead(level, score) {
+  const name = (document.getElementById('lead-name')?.value || '').trim();
+  const age = (document.getElementById('lead-age')?.value || '').trim();
+  const phone = (document.getElementById('lead-phone')?.value || '').trim();
+
+  if (!name) { showToast('❌ Ismingizni kiriting!', 'error'); return; }
+  if (!age) { showToast('❌ Yoshingizni kiriting!', 'error'); return; }
+  if (!phone) { showToast('❌ Telefon raqamingizni kiriting!', 'error'); return; }
+
+  const lead = {
+    id: genId(),
+    name, age, phone, level, score: `${score}/10`,
+    courseType: testModalState.courseType || 'Umumiy',
+    date: formatDate(),
+    handled: false
+  };
+  DB.leads.unshift(lead);
+  
+  await saveToIndexedDB();
+  closeModal('test-modal');
+  showToast(`✅ Rahmat ${name}! Arizangiz qabul qilindi. Tez orada bog'lanamiz.`, 'success', 4000);
+}
+
+/* =============================================
+   INITIAL TEST
+   ============================================= */
+let itpState = { current: 0, score: 0, locked: false };
+
+function checkFirstVisit() {
+  if (localStorage.getItem('firstTestDone')) {
+    showHero();
+  } else {
+    showInitialTestPage();
+  }
+}
+
+function showInitialTestPage() {
+  document.getElementById('initial-test-page').style.display = 'flex';
+  document.getElementById('hero').style.display = 'none';
+  itpState = { current: 0, score: 0, locked: false };
+  renderItpQ();
+}
+
+function showHero() {
+  document.getElementById('initial-test-page').style.display = 'none';
+  document.getElementById('hero').style.display = 'flex';
+}
+
+function renderItpQ() {
+  const q = TEST_QUESTIONS[itpState.current];
+  const pct = (itpState.current / TEST_QUESTIONS.length) * 100;
+  document.getElementById('itp-step-label').textContent =
+    `Savol ${itpState.current + 1} / ${TEST_QUESTIONS.length}`;
+  document.getElementById('itp-q-text').textContent = q.q;
+  document.getElementById('itp-opts').innerHTML = q.opts.map((o, i) => `
+    <li class="test-opt" onclick="answerItp(${i})">${o}</li>
+  `).join('');
+  document.getElementById('itp-prog').style.width = pct + '%';
+  itpState.locked = false;
+}
+
+function answerItp(idx) {
+  if (itpState.locked) return;
+  itpState.locked = true;
+  const q = TEST_QUESTIONS[itpState.current];
+  const opts = document.querySelectorAll('#itp-opts .test-opt');
+  opts.forEach(o => { o.classList.add('disabled'); o.onclick = null; });
+  if (idx === q.correct) {
+    opts[idx].classList.add('correct');
+    itpState.score++;
+  } else {
+    opts[idx].classList.add('wrong');
+    if (opts[q.correct]) opts[q.correct].classList.add('correct');
+  }
+  setTimeout(() => {
+    itpState.current++;
+    if (itpState.current < TEST_QUESTIONS.length) {
+      itpState.locked = false;
+      renderItpQ();
+    } else {
+      showItpResult();
+    }
+  }, 850);
+}
+
+function showItpResult() {
+  document.getElementById('itp-prog').style.width = '100%';
+  const s = itpState.score;
+  let level, levelClass, emoji, msg;
+  if (s <= 3) {
+    level = 'Beginner'; levelClass = 'level-beginner'; emoji = '📚';
+    msg = "Boshlang'ich darajasiz. Standard kursimiz sizga ideal!";
+  } else if (s <= 7) {
+    level = 'Intermediate'; levelClass = 'level-intermediate'; emoji = '🎯';
+    msg = "O'rta daraja. Intensive kurs bilan tez rivojlanasiz!";
+  } else {
+    level = 'Advanced'; levelClass = 'level-advanced'; emoji = '🏆';
+    msg = "Yuqori daraja! Intensive kursda yanada sayqal bering!";
+  }
+
+  const box = document.getElementById('initial-test-page');
+  box.innerHTML = `
+    <div class="container" style="display:flex;justify-content:center">
+      <div class="glass test-page-box">
+        <span style="font-size:4rem;margin-bottom:16px;display:block">${emoji}</span>
+        <div style="font-size:2.2rem;font-weight:800;font-family:var(--head);color:#fff;margin-bottom:10px">${s} / 10</div>
+        <div style="font-size:1.15rem;margin-bottom:8px">
+          Darajangiz: <span class="a-lead-level ${levelClass}">${level}</span>
+        </div>
+        <p style="margin-bottom:28px">${msg}</p>
+        <div style="background:rgba(0,80,130,0.2);border:1px solid var(--border2);border-radius:16px;padding:24px;text-align:left">
+          <div style="font-weight:700;color:#fff;margin-bottom:18px;text-align:center;font-family:var(--head)">
+            <i class="fas fa-user-plus" style="color:var(--cyan)"></i> Ma'lumotlaringizni qoldiring
+          </div>
+          <div class="input-group">
+            <label class="input-label">Ismingiz *</label>
+            <input type="text" id="itp-lead-name" class="input-field" placeholder="To'liq ismingiz">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Yoshingiz *</label>
+            <input type="number" id="itp-lead-age" class="input-field" placeholder="Yoshingiz (masalan: 22)" min="5" max="70">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Telefon Raqamingiz *</label>
+            <input type="tel" id="itp-lead-phone" class="input-field" placeholder="+998 90 000 00 00">
+          </div>
+          <button class="btn btn-primary" style="width:100%" onclick="submitItpLead('${level}',${s})">
+            <i class="fas fa-paper-plane"></i> Arizani Yuborish
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+async function submitItpLead(level, score) {
+  const name = (document.getElementById('itp-lead-name')?.value || '').trim();
+  const age = (document.getElementById('itp-lead-age')?.value || '').trim();
+  const phone = (document.getElementById('itp-lead-phone')?.value || '').trim();
+  if (!name) { showToast('❌ Ismingizni kiriting!', 'error'); return; }
+  if (!age) { showToast('❌ Yoshingizni kiriting!', 'error'); return; }
+  if (!phone) { showToast('❌ Telefon raqamingizni kiriting!', 'error'); return; }
+
+  const lead = {
+    id: genId(), name, age, phone, level,
+    score: `${score}/10`, courseType: 'Kirish Testi',
+    date: formatDate(), handled: false
+  };
+  DB.leads.unshift(lead);
+  
+  await saveToIndexedDB();
+  localStorage.setItem('firstTestDone', '1');
+  showHero();
+  showToast(`✅ Rahmat ${name}! Tez orada bog'lanamiz.`, 'success', 4000);
+}
+
+/* =============================================
+   HERO RENDER
+   ============================================= */
+function renderHero() {
+  const titleEl = document.getElementById('hero-title-el');
+  if (titleEl) {
+    titleEl.innerHTML = `${DB.hero.title} <span class="h1-highlight">Professional</span>`;
+  }
+  
+  const descEl = document.getElementById('hero-desc-display');
+  if (descEl) descEl.textContent = DB.hero.desc;
+  
+  const photoEl = document.getElementById('hero-photo');
+  if (photoEl && DB.hero.photo) photoEl.src = DB.hero.photo;
+
+  const b1 = document.querySelector('#badge-1 span');
+  const b2 = document.querySelector('#badge-2 span');
+  const b3 = document.querySelector('#badge-3 span');
+  if (b1) b1.textContent = DB.hero.badge1;
+  if (b2) b2.textContent = DB.hero.badge2;
+  if (b3) b3.textContent = DB.hero.badge3;
+
+  // Admin fields
+  const t = document.getElementById('a-hero-title');
+  const d = document.getElementById('a-hero-desc');
+  const b1f = document.getElementById('a-badge1');
+  const b2f = document.getElementById('a-badge2');
+  const b3f = document.getElementById('a-badge3');
+  if (t) t.value = DB.hero.title;
+  if (d) d.value = DB.hero.desc;
+  if (b1f) b1f.value = DB.hero.badge1;
+  if (b2f) b2f.value = DB.hero.badge2;
+  if (b3f) b3f.value = DB.hero.badge3;
+
+  if (DB.hero.photo) {
+    const prev = document.getElementById('hero-img-prev');
+    const box = document.getElementById('hero-upload-box');
+    if (prev) prev.src = DB.hero.photo;
+    if (box) box.classList.add('has-img');
+  }
+}
+
+async function saveHero() {
+  const title = (document.getElementById('a-hero-title').value || '').trim();
+  const desc = (document.getElementById('a-hero-desc').value || '').trim();
+
+  if (!title) { showToast('❌ Sarlavha bo\'sh bo\'lmasin!', 'error'); return; }
+
+  DB.hero.title = title;
+  DB.hero.desc = desc;
+  DB.hero.badge1 = document.getElementById('a-badge1').value || DB.hero.badge1;
+  DB.hero.badge2 = document.getElementById('a-badge2').value || DB.hero.badge2;
+  DB.hero.badge3 = document.getElementById('a-badge3').value || DB.hero.badge3;
+
+  if (tempFiles.heroPhoto) {
+    DB.hero.photo = tempFiles.heroPhoto;
+    delete tempFiles.heroPhoto;
+  }
+
+  await saveToIndexedDB();
+  renderHero();
+  showToast('✅ Hero bo\'limi saqlandi!', 'success');
+}
+
+/* =============================================
+   COURSES
+   ============================================= */
+function renderCourses() {
+  const c = document.getElementById('courses-container');
+  if (!c) return;
+  c.innerHTML = `
+    <div class="course-card glass">
+      <div class="course-name">${DB.courses.std.name}</div>
+      <div class="course-price-row">
+        <span class="course-price">${DB.courses.std.price}</span>
+        <span class="course-price-unit">so'm</span>
+      </div>
+      <div class="course-period">oylik to'lov</div>
+      <ul class="course-feats">
+        ${DB.courses.std.feats.map(f => `
+          <li class="course-feat"><i class="fas fa-check-circle"></i>${f}</li>
+        `).join('')}
+      </ul>
+      <button class="btn btn-outline" style="width:100%"
+        onclick="openTestModal('Standard')">
+        Ro'yxatdan O'tish <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+    <div class="course-card glass popular">
+      <span class="popular-tag">⭐ OMMABOP</span>
+      <div class="course-name">${DB.courses.int.name}</div>
+      <div class="course-price-row">
+        <span class="course-price">${DB.courses.int.price}</span>
+        <span class="course-price-unit">so'm</span>
+      </div>
+      <div class="course-period">oylik to'lov</div>
+      <ul class="course-feats">
+        ${DB.courses.int.feats.map(f => `
+          <li class="course-feat"><i class="fas fa-check-circle"></i>${f}</li>
+        `).join('')}
+      </ul>
+      <button class="btn btn-primary" style="width:100%"
+        onclick="openTestModal('Intensive')">
+        Ro'yxatdan O'tish <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  `;
+
+  // fill admin fields
+  const cn = id => document.getElementById(id);
+  if (cn('c-std-name')) cn('c-std-name').value = DB.courses.std.name;
+  if (cn('c-std-price')) cn('c-std-price').value = DB.courses.std.price;
+  if (cn('c-std-feats')) cn('c-std-feats').value = DB.courses.std.feats.join('\n');
+  if (cn('c-int-name')) cn('c-int-name').value = DB.courses.int.name;
+  if (cn('c-int-price')) cn('c-int-price').value = DB.courses.int.price;
+  if (cn('c-int-feats')) cn('c-int-feats').value = DB.courses.int.feats.join('\n');
+}
+
+async function saveCourse(type) {
+  const name = (document.getElementById(`c-${type}-name`).value || '').trim();
+  const price = (document.getElementById(`c-${type}-price`).value || '').trim();
+  const feats = document.getElementById(`c-${type}-feats`).value
+    .split('\n').map(f => f.trim()).filter(Boolean);
+
+  if (!price) { showToast('❌ Narx kiritilmadi!', 'error'); return; }
+
+  DB.courses[type].name = name || DB.courses[type].name;
+  DB.courses[type].price = price;
+  if (feats.length) DB.courses[type].feats = feats;
+
+  await saveToIndexedDB();
+  renderCourses();
+  showToast('✅ Kurs saqlandi!', 'success');
+}
+
+/* =============================================
+   WHY US
+   ============================================= */
+function renderWhy() {
+  const desc = document.getElementById('why-desc-display');
+  if (desc) desc.textContent = DB.why.desc;
+  const grid = document.getElementById('why-grid');
+  if (grid) {
+    grid.innerHTML = DB.why.points.map(p => `
+      <div class="glass why-card" style="border:1px solid var(--border)">
+        <div class="why-icon"><i class="fas ${p.icon}"></i></div>
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+      </div>
+    `).join('');
+  }
+  const wd = document.getElementById('a-why-desc');
+  if (wd) wd.value = DB.why.desc;
+  renderAdminWhyList();
+}
+
+async function saveWhy() {
+  const d = document.getElementById('a-why-desc');
+  if (d && d.value.trim()) DB.why.desc = d.value.trim();
+  await saveToIndexedDB();
+  renderWhy();
+  showToast('✅ "Nega Biz" saqlandi!', 'success');
+}
+
+async function addWhyPoint() {
+  const icon = (document.getElementById('why-icon-input').value || 'fa-star').trim();
+  const title = (document.getElementById('why-title-input').value || '').trim();
+  const desc = (document.getElementById('why-pdesc-input').value || '').trim();
+  if (!title) { showToast('❌ Sarlavha kiritilmadi!', 'error'); return; }
+  DB.why.points.push({ icon, title, desc });
+  await saveToIndexedDB();
+  renderWhy();
+  document.getElementById('why-icon-input').value = '';
+  document.getElementById('why-title-input').value = '';
+  document.getElementById('why-pdesc-input').value = '';
+  showToast('✅ Ustunlik qo\'shildi!', 'success');
+}
+
+async function deleteWhyPoint(idx) {
+  if (!confirm('O\'chirishni tasdiqlaysizmi?')) return;
+  DB.why.points.splice(idx, 1);
+  await saveToIndexedDB();
+  renderWhy();
+  showToast('🗑️ O\'chirildi!');
+}
+
+function renderAdminWhyList() {
+  const el = document.getElementById('admin-why-list');
+  if (!el) return;
+  if (!DB.why.points.length) {
+    el.innerHTML = '<div class="empty-state"><i class="fas fa-star"></i><p>Hali ustunlik yo\'q</p></div>';
+    return;
+  }
+  el.innerHTML = DB.why.points.map((p, i) => `
+    <div class="a-item">
+      <div style="width:42px;height:42px;background:rgba(0,180,220,0.1);border-radius:10px;
+        display:flex;align-items:center;justify-content:center;color:var(--cyan);flex-shrink:0">
+        <i class="fas ${p.icon}"></i>
+      </div>
+      <div class="a-item-info">
+        <div class="a-item-title">${p.title}</div>
+        <div class="a-item-meta">${p.desc}</div>
+      </div>
+      <div class="a-item-acts">
+        <button class="icon-btn del-btn" onclick="deleteWhyPoint(${i})"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* =============================================
+   RESULTS
+   ============================================= */
+function renderResults() {
+  const track = document.getElementById('results-track');
+  if (!track) return;
+  
+  if (!DB.results.length) {
+    track.innerHTML = '<li class="slide-card" style="flex:0 0 100%;text-align:center;padding:60px"><div class="empty-state"><i class="fas fa-trophy"></i><p>Hali natija qo\'shilmagan</p></div></li>';
+    return;
+  }
+  
+  track.innerHTML = DB.results.map(item => `
+    <li class="slide-card">
+      <div class="slide-img-box" onclick="openZoom('${item.img}')">
+        <img src="${item.img}" class="slide-img" alt="${item.student}" loading="lazy">
+        <div class="slide-img-overlay">
+          <span class="slide-badge badge-cyan">${item.title}</span>
+          <div class="slide-img-title">${item.student}</div>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="comments-area">
+          <div class="comments-list" id="res-cl-${item.id}">
+            ${renderCommentsList(item.comments)}
+          </div>
+          <div class="comment-form">
+            <input class="c-name-input" id="res-cn-${item.id}" placeholder="Ismingiz">
+            <input class="c-text-input" id="res-ci-${item.id}" placeholder="Izoh yozing..."
+              onkeydown="if(event.key==='Enter')addComment('results',${item.id})">
+            <button class="c-send-btn" onclick="addComment('results',${item.id})">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </li>
+  `).join('');
+  renderAdminResultsList();
+}
+
+async function addResult() {
+  const titleEl = document.getElementById('res-title');
+  const studentEl = document.getElementById('res-student');
+  const uploadBox = document.getElementById('res-upload-box');
+  const imgPrev = document.getElementById('res-img-prev');
+
+  if (!titleEl || !studentEl) return;
+
+  const title = titleEl.value.trim();
+  const student = studentEl.value.trim();
+  const img = tempFiles.resPhoto || '[images.unsplash.com](https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400)';
+
+  if (!title || !student) {
+    showToast('❌ Iltimos, barcha maydonlarni to\'ldiring!', 'error');
+    return;
+  }
+
+  const newObj = {
+    id: genId(),
+    title: title,
+    student: student,
+    img: img,
+    comments: []
+  };
+
+  DB.results.unshift(newObj);
+  await saveToIndexedDB();
+
+  renderResults();
+  renderAdminResultsList();
+
+  titleEl.value = '';
+  studentEl.value = '';
+  if (uploadBox) uploadBox.classList.remove('has-img');
+  if (imgPrev) imgPrev.src = '';
+  delete tempFiles.resPhoto;
+
+  showToast('✅ Natija qo\'shildi!', 'success');
+}
+
+async function deleteResult(id) {
+  if (!confirm('Natijani o\'chirishni tasdiqlaysizmi?')) return;
+  DB.results = DB.results.filter(r => r.id !== id);
+  await saveToIndexedDB();
+  renderResults();
+  renderAdminResultsList();
+  showToast('🗑️ Natija o\'chirildi!');
+}
+
+function renderAdminResultsList() {
+  const el = document.getElementById('admin-results-list');
+  if (!el) return;
+  if (!DB.results.length) {
+    el.innerHTML = '<div class="empty-state"><i class="fas fa-trophy"></i><p>Hali natija yo\'q</p></div>';
+    return;
+  }
+  el.innerHTML = DB.results.map(r => `
+    <div class="a-item">
+      <img src="${r.img}" class="a-thumb" alt="">
+      <div class="a-item-info">
+        <div class="a-item-title">${r.title} — ${r.student}</div>
+        <div class="a-item-meta">${r.comments.length} ta izoh</div>
+      </div>
+      <div class="a-item-acts">
+        <button class="icon-btn del-btn" onclick="deleteResult(${r.id})">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* =============================================
+   NEWS
+   ============================================= */
+function renderNews() {
+  const track = document.getElementById('news-track');
+  if (!track) return;
+  
+  if (!DB.news.length) {
+    track.innerHTML = '<li class="slide-card" style="flex:0 0 100%;text-align:center;padding:60px"><div class="empty-state"><i class="fas fa-newspaper"></i><p>Hali yangilik qo\'shilmagan</p></div></li>';
+    return;
+  }
+  
+  track.innerHTML = DB.news.map(item => `
+    <li class="slide-card">
+      <div class="slide-img-box" onclick="openZoom('${item.img}')">
+        <img src="${item.img}" class="slide-img" alt="${item.title}" loading="lazy">
+        <div class="slide-img-overlay">
+          <span class="slide-badge badge-purple">Yangilik</span>
+          <div class="slide-img-title">${item.title}</div>
+          <div class="slide-img-meta">${item.date}</div>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="slide-desc">${item.desc}</div>
+        <div class="comments-area">
+          <div class="comments-list" id="news-cl-${item.id}">
+            ${renderCommentsList(item.comments)}
+          </div>
+          <div class="comment-form">
+            <input class="c-name-input" id="news-cn-${item.id}" placeholder="Ismingiz">
+            <input class="c-text-input" id="news-ci-${item.id}" placeholder="Izoh yozing..."
+              onkeydown="if(event.key==='Enter')addComment('news',${item.id})">
+            <button class="c-send-btn" onclick="addComment('news',${item.id})">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </li>
+  `).join('');
+  renderAdminNewsList();
+}
+
+async function addNews() {
+  const title = (document.getElementById('news-title-input').value || '').trim();
+  const desc = (document.getElementById('news-desc-input').value || '').trim();
+  const img = tempFiles.newsPhoto ||
+    '[images.unsplash.com](https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600)';
+  if (!title) { showToast('❌ Sarlavha kiritilmadi!', 'error'); return; }
+  
+  DB.news.unshift({ id: genId(), title, desc, img, date: formatDate(), comments: [] });
+  await saveToIndexedDB();
+  
+  renderNews();
+  document.getElementById('news-title-input').value = '';
+  document.getElementById('news-desc-input').value = '';
+  document.getElementById('news-upload-box').classList.remove('has-img');
+  document.getElementById('news-img-prev').src = '';
+  delete tempFiles.newsPhoto;
+  showToast('✅ Yangilik qo\'shildi!', 'success');
+}
+
+async function deleteNews(id) {
+  if (!confirm('Yangilikni o\'chirishni tasdiqlaysizmi?')) return;
+  DB.news = DB.news.filter(n => n.id !== id);
+  await saveToIndexedDB();
+  renderNews();
+  showToast('🗑️ Yangilik o\'chirildi!');
+}
+
+function renderAdminNewsList() {
+  const el = document.getElementById('admin-news-list');
+  if (!el) return;
+  if (!DB.news.length) {
+    el.innerHTML = '<div class="empty-state"><i class="fas fa-newspaper"></i><p>Hali yangilik yo\'q</p></div>';
+    return;
+  }
+  el.innerHTML = DB.news.map(n => `
+    <div class="a-item">
+      <img src="${n.img}" class="a-thumb" alt="">
+      <div class="a-item-info">
+        <div class="a-item-title">${n.title}</div>
+        <div class="a-item-meta">${n.date} · ${n.comments.length} izoh</div>
+      </div>
+      <div class="a-item-acts">
+        <button class="icon-btn del-btn" onclick="deleteNews(${n.id})">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* =============================================
+   PROCESS
+   ============================================= */
+function renderProcess() {
+  const track = document.getElementById('process-track');
+  if (!track) return;
+  
+  if (!DB.process.length) {
+    track.innerHTML = '<li class="slide-card" style="flex:0 0 100%;text-align:center;padding:60px"><div class="empty-state"><i class="fas fa-photo-video"></i><p>Hali lavha qo\'shilmagan</p></div></li>';
+    return;
+  }
+  
+  track.innerHTML = DB.process.map(item => `
+    <li class="slide-card">
+      <div class="slide-img-box" onclick="openZoom('${item.img}')">
+        <img src="${item.img}" class="slide-img" alt="${item.title}" loading="lazy">
+        <div class="slide-img-overlay">
+          <span class="slide-badge badge-green">Lavha</span>
+          <div class="slide-img-title">${item.title}</div>
+        </div>
+      </div>
+      <div class="slide-body">
+        <div class="slide-desc">${item.desc}</div>
+        <div class="comments-area">
+          <div class="comments-list" id="proc-cl-${item.id}">
+            ${renderCommentsList(item.comments)}
+          </div>
+          <div class="comment-form">
+            <input class="c-name-input" id="proc-cn-${item.id}" placeholder="Ismingiz">
+            <input class="c-text-input" id="proc-ci-${item.id}" placeholder="Izoh yozing..."
+              onkeydown="if(event.key==='Enter')addComment('process',${item.id})">
+            <button class="c-send-btn" onclick="addComment('process',${item.id})">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </li>
+  `).join('');
+  renderAdminProcessList();
+}
+
+async function addProcess() {
+  const title = (document.getElementById('proc-title-input').value || '').trim();
+  const desc = (document.getElementById('proc-desc-input').value || '').trim();
+  const img = tempFiles.procPhoto ||
+    '[images.unsplash.com](https://images.unsplash.com/photo-1524178232363-1fb28f74b521?w=600)';
+  if (!title) { showToast('❌ Sarlavha kiritilmadi!', 'error'); return; }
+  
+  DB.process.unshift({ id: genId(), title, desc, img, comments: [] });
+  await saveToIndexedDB();
+  
+  renderProcess();
+  document.getElementById('proc-title-input').value = '';
+  document.getElementById('proc-desc-input').value = '';
+  document.getElementById('proc-upload-box').classList.remove('has-img');
+  document.getElementById('proc-img-prev').src = '';
+  delete tempFiles.procPhoto;
+  showToast('✅ Lavha qo\'shildi!', 'success');
+}
+
+async function deleteProcess(id) {
+  if (!confirm('Lavhani o\'chirishni tasdiqlaysizmi?')) return;
+  DB.process = DB.process.filter(p => p.id !== id);
+  await saveToIndexedDB();
+  renderProcess();
+  showToast('🗑️ Lavha o\'chirildi!');
+}
+
+function renderAdminProcessList() {
+  const el = document.getElementById('admin-process-list');
+  if (!el) return;
+  if (!DB.process.length) {
+    el.innerHTML = '<div class="empty-state"><i class="fas fa-photo-video"></i><p>Hali lavha yo\'q</p></div>';
+    return;
+  }
+  el.innerHTML = DB.process.map(p => `
+    <div class="a-item">
+      <img src="${p.img}" class="a-thumb" alt="">
+      <div class="a-item-info">
+        <div class="a-item-title">${p.title}</div>
+        <div class="a-item-meta">${p.comments.length} ta izoh</div>
+      </div>
+      <div class="a-item-acts">
+        <button class="icon-btn del-btn" onclick="deleteProcess(${p.id})">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* =============================================
+   COMMENTS
+   ============================================= */
+function renderCommentsList(comments) {
+  if (!comments || !comments.length) {
+    return '<div class="no-comment">Hali izoh yo\'q. Birinchi bo\'ling!</div>';
+  }
+  return comments.map(c => `
+    <div class="comment-item">
+      <span class="c-name">${escapeHtml(c.name)}</span>
+      <span class="c-text">${escapeHtml(c.text)}</span>
+      <span class="c-date">${c.date || ''}</span>
+    </div>
+  `).join('');
+}
+
+async function addComment(type, id) {
+  const prefixMap = { results: 'res', news: 'news', process: 'proc' };
+  const pref = prefixMap[type];
+  const nameEl = document.getElementById(`${pref}-cn-${id}`);
+  const textEl = document.getElementById(`${pref}-ci-${id}`);
+  if (!nameEl || !textEl) return;
+  const name = nameEl.value.trim();
+  const text = textEl.value.trim();
+  if (!name || !text) { showToast('❌ Ism va izoh kiritilishi shart!', 'error'); return; }
+
+  const arr = DB[type];
+  const item = arr.find(i => i.id === id);
+  if (!item) return;
+
+  const comment = { id: genId(), name, text, date: formatDate() };
+  item.comments.push(comment);
+  
+  await saveToIndexedDB();
+
+  const listEl = document.getElementById(`${pref}-cl-${id}`);
+  if (listEl) listEl.innerHTML = renderCommentsList(item.comments);
+
+  nameEl.value = '';
+  textEl.value = '';
+  showToast('💬 Izoh qoldirildi!', 'success');
+}
+
+async function deleteComment(type, itemId, commentId) {
+  const arr = DB[type];
+  const item = arr.find(i => i.id === itemId);
+  if (!item) return;
+  item.comments = item.comments.filter(c => c.id !== commentId);
+  
+  await saveToIndexedDB();
+  
+  renderAdminComments();
+  if (type === 'results') renderResults();
+  else if (type === 'news') renderNews();
+  else renderProcess();
+  showToast('🗑️ Izoh o\'chirildi!');
+}
+
+function renderAdminComments() {
+  const el = document.getElementById('admin-all-comments');
+  if (!el) return;
+  const filterType = (document.getElementById('comments-filter-type')?.value || '');
+
+  const all = [];
+  const pushComments = (arr, type, typeLabel, getTitleFn) => {
+    arr.forEach(item => {
+      item.comments.forEach(c => {
+        all.push({ ...c, type, typeLabel, itemId: item.id, itemTitle: getTitleFn(item) });
+      });
+    });
+  };
+  pushComments(DB.results, 'results', 'Natijalar', i => `${i.student} — ${i.title}`);
+  pushComments(DB.news, 'news', 'Yangilik', i => i.title);
+  pushComments(DB.process, 'process', 'Dars Jarayoni', i => i.title);
+
+  const filtered = filterType ? all.filter(c => c.type === filterType) : all;
+
+  if (!filtered.length) {
+    el.innerHTML = '<div class="empty-state"><i class="fas fa-comments"></i><p>Hali izoh yo\'q</p></div>';
+    return;
+  }
+  el.innerHTML = filtered.map(c => `
+    <div class="a-comment">
+      <div class="a-comment-header">
+        <div>
+          <span class="a-comment-source">[${c.typeLabel}] ${c.itemTitle}</span>
+          <div class="a-comment-meta">${escapeHtml(c.name)} · ${c.date || ''}</div>
+        </div>
+        <button class="icon-btn del-btn" onclick="deleteComment('${c.type}',${c.itemId},${c.id})">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+      <div class="a-comment-text">${escapeHtml(c.text)}</div>
+    </div>
+  `).join('');
+}
+
+/* =============================================
+   LEADS
+   ============================================= */
+function renderLeadsList() {
+  const el = document.getElementById('admin-leads-list');
+  if (!el) return;
+  const filterLevel = document.getElementById('leads-filter-level')?.value || '';
+  const filterHandled = document.getElementById('leads-filter-handled')?.value || '';
+
+  let filtered = [...DB.leads];
+  if (filterLevel) filtered = filtered.filter(l => l.level === filterLevel);
+  if (filterHandled !== '') filtered = filtered.filter(l => String(l.handled) === filterHandled);
+
+  if (!filtered.length) {
+    el.innerHTML = '<div class="empty-state"><i class="fas fa-inbox"></i><p>Hali ariza yo\'q</p></div>';
+    return;
+  }
+  el.innerHTML = filtered.map(l => {
+    const levelClass = l.level === 'Beginner' ? 'level-beginner'
+      : l.level === 'Intermediate' ? 'level-intermediate' : 'level-advanced';
+    return `
+      <div class="a-lead">
+        <div class="a-lead-header">
+          <div class="a-lead-name">
+            <i class="fas fa-user" style="color:var(--cyan);margin-right:6px"></i>${escapeHtml(l.name)}
+          </div>
+          <div class="a-lead-date">${l.date}</div>
+        </div>
+        <div class="a-lead-details">
+          <span class="a-lead-detail"><i class="fas fa-phone"></i> ${escapeHtml(l.phone)}</span>
+          <span class="a-lead-detail"><i class="fas fa-birthday-cake"></i> ${escapeHtml(l.age)} yosh</span>
+          <span class="a-lead-detail"><i class="fas fa-graduation-cap"></i> ${escapeHtml(l.courseType || '')}</span>
+          <span class="a-lead-level ${levelClass}">${l.level}</span>
+          <span class="a-lead-score">Test: ${l.score}</span>
+        </div>
+        <div class="a-lead-actions">
+          <span class="${l.handled ? 'handled-badge' : 'not-handled-badge'}">
+            ${l.handled ? '✅ Ko\'rib chiqilgan' : '⏳ Yangi'}
+          </span>
+          ${!l.handled ? `
+            <button class="btn btn-success btn-sm" onclick="markLeadHandled(${l.id})">
+              <i class="fas fa-check"></i> Ko'rib chiqildi
+            </button>
+          ` : ''}
+          <button class="btn btn-danger btn-sm" onclick="deleteLead(${l.id})">
+            <i class="fas fa-trash"></i> O'chirish
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+async function markLeadHandled(id) {
+  const lead = DB.leads.find(l => l.id === id);
+  if (lead) { lead.handled = true; }
+  await saveToIndexedDB();
+  renderLeadsList();
+  renderDashboard();
+  showToast('✅ Ariza ko\'rib chiqildi deb belgilandi!', 'success');
+}
+
+async function deleteLead(id) {
+  if (!confirm('Arizani o\'chirishni tasdiqlaysizmi?')) return;
+  DB.leads = DB.leads.filter(l => l.id !== id);
+  await saveToIndexedDB();
+  renderLeadsList();
+  renderDashboard();
+  showToast('🗑️ Ariza o\'chirildi!');
+}
+
+async function clearAllLeads() {
+  if (!confirm('Barcha arizalarni o\'chirishni tasdiqlaysizmi?')) return;
+  DB.leads = [];
+  await saveToIndexedDB();
+  renderLeadsList();
+  renderDashboard();
+  showToast('🗑️ Barcha arizalar o\'chirildi!');
+}
+
+/* =============================================
+   DASHBOARD
+   ============================================= */
+function renderDashboard() {
+  const statsEl = document.getElementById('admin-stats');
+  if (statsEl) {
+    const totalComments = DB.results.reduce((a, r) => a + r.comments.length, 0)
+      + DB.news.reduce((a, r) => a + r.comments.length, 0)
+      + DB.process.reduce((a, r) => a + r.comments.length, 0);
+    const newLeads = DB.leads.filter(l => !l.handled).length;
+    statsEl.innerHTML = `
+      <div class="stat-card"><i class="fas fa-user-plus"></i><div class="stat-num">${DB.leads.length}</div><div class="stat-label">Jami Arizalar</div></div>
+      <div class="stat-card"><i class="fas fa-clock"></i><div class="stat-num" style="color:var(--cyan)">${newLeads}</div><div class="stat-label">Yangi Arizalar</div></div>
+      <div class="stat-card"><i class="fas fa-images"></i><div class="stat-num">${DB.results.length + DB.news.length + DB.process.length}</div><div class="stat-label">Jami Kontentlar</div></div>
+      <div class="stat-card"><i class="fas fa-comments"></i><div class="stat-num">${totalComments}</div><div class="stat-label">Jami Izohlar</div></div>
+    `;
+  }
+
+  const rlEl = document.getElementById('dash-recent-leads');
+  if (rlEl) {
+    const recent = DB.leads.slice(0, 5);
+    if (!recent.length) {
+      rlEl.innerHTML = '<div class="empty-state"><i class="fas fa-inbox"></i><p>Hali ariza yo\'q</p></div>';
+    } else {
+      rlEl.innerHTML = recent.map(l => {
+        const lc = l.level === 'Beginner' ? 'level-beginner' : l.level === 'Intermediate' ? 'level-intermediate' : 'level-advanced';
+        return `
+          <div class="a-item" style="margin-bottom:8px">
+            <div style="width:38px;height:38px;border-radius:50%;background:rgba(0,180,220,0.1);
+              border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;
+              color:var(--cyan);flex-shrink:0;font-size:1rem">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="a-item-info">
+              <div class="a-item-title">${escapeHtml(l.name)} · ${escapeHtml(l.phone)}</div>
+              <div class="a-item-meta">${l.date} · <span class="a-lead-level ${lc}">${l.level}</span> · ${l.score}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  const rcEl = document.getElementById('dash-recent-comments');
+  if (rcEl) {
+    const all = [];
+    DB.results.forEach(i => i.comments.forEach(c => all.push({ ...c, source: `Natijalar: ${i.student}` })));
+    DB.news.forEach(i => i.comments.forEach(c => all.push({ ...c, source: `Yangilik: ${i.title}` })));
+    DB.process.forEach(i => i.comments.forEach(c => all.push({ ...c, source: `Dars: ${i.title}` })));
+    const recent = all.slice(-5).reverse();
+    if (!recent.length) {
+      rcEl.innerHTML = '<div class="empty-state"><i class="fas fa-comment-slash"></i><p>Hali izoh yo\'q</p></div>';
+    } else {
+      rcEl.innerHTML = recent.map(c => `
+        <div class="a-item" style="margin-bottom:8px">
+          <div class="a-item-info">
+            <div class="a-item-title">${escapeHtml(c.name)}: ${escapeHtml(c.text.slice(0, 60))}${c.text.length > 60 ? '...' : ''}</div>
+            <div class="a-item-meta">${c.source} · ${c.date || ''}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+  }
+}
+
+/* =============================================
+   SETTINGS
+   ============================================= */
+function renderSettings() {}
+  const phone = document.getElementById('s-phone');
+  const telegram = document.getElementById('s-telegram');
+  const email = document.getElementById('s-email');
+  
+  if (phone) phone.value = DB.settings.phone;
+  if (telegram) telegram.value = DB.settings.telegram;
+  if (email) email.value = DB.settings.email;
+  
+  // Update footer
+  const fp = document.getElementById('footer-phone');
+  const ft = document.getElementById('footer-telegram');
+  const fe = document.getElementById('footer-email');
+  if (fp) fp.innerHTML = `<i class="fas fa-phone-alt"></i> ${DB.settings.phone}`;
+  if (ft) ft.innerHTML = `<i class="fab fa-telegram-plane"></i> ${DB.settings.telegram}`;
+  if (fe) fe.innerHTML = `<i class="fas fa-envelope"></i> ${DB.settings.email}`;
+  
+  // Update floating buttons
+  const fc = document.getElementById('float-call');
+const ftg = document.getElementById('float-tg');
+
+if (fc) {
+    // Telefon raqamidagi bo'shliqlarni olib tashlab link qiladi
+    fc.href = `tel:${DB.settings.phone.replace(/\s/g, '')}`;
+}
+
+if (ftg) {
+    // @ belgisini olib tashlaymiz (agar bo'lsa)
+    let tgUser = DB.settings.telegram.replace('@', '').trim();
+    // Toza link hosil qilamiz
+    ftg.href = `https://t.me/${tgUser}`;
+}
+
+async function saveSettings() {
+  DB.settings.phone = document.getElementById('s-phone')?.value?.trim() || DB.settings.phone;
+  DB.settings.telegram = document.getElementById('s-telegram')?.value?.trim() || DB.settings.telegram;
+  DB.settings.email = document.getElementById('s-email')?.value?.trim() || DB.settings.email;
+  
+  await saveToIndexedDB();
+  renderSettings();
+  showToast('✅ Sozlamalar saqlandi!', 'success');
+}
+
+async function changePassword() {
+  const oldPass = document.getElementById('s-old-pass')?.value?.trim() || '';
+  const newPass = document.getElementById('s-new-pass')?.value?.trim() || '';
+  const confPass = document.getElementById('s-confirm-pass')?.value?.trim() || '';
+  if (oldPass !== DB.auth.password) { showToast('❌ Joriy parol xato!', 'error'); return; }
+  if (!newPass) { showToast('❌ Yangi parol kiritilmadi!', 'error'); return; }
+  if (newPass !== confPass) { showToast('❌ Parollar mos emas!', 'error'); return; }
+  if (newPass.length < 4) { showToast('❌ Parol kamida 4 ta belgi bo\'lishi kerak!', 'error'); return; }
+  DB.auth.password = newPass;
+  
+  await saveToIndexedDB();
+  
+  document.getElementById('s-old-pass').value = '';
+  document.getElementById('s-new-pass').value = '';
+  document.getElementById('s-confirm-pass').value = '';
+  showToast('✅ Parol muvaffaqiyatli o\'zgartirildi!', 'success');
+}
+
+async function resetAllData() {
+  if (!confirm('⚠️ DIQQAT! Barcha ma\'lumotlar o\'chiriladi. Davom etasizmi?')) return;
+  if (!confirm('Bu amalni ortga qaytarib bo\'lmaydi. Haqiqatan ham davom etasizmi?')) return;
+  
+  DB = JSON.parse(JSON.stringify(DEFAULT_DATA));
+  await saveToIndexedDB();
+  localStorage.removeItem('firstTestDone');
+  
+  renderAll();
+  showToast('✅ Barcha ma\'lumotlar tozalandi!', 'success');
+}
+
+function exportData() {
+  const dataStr = JSON.stringify(DB, null, 2);
+  const blob = new Blob([dataStr], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('✅ Ma\'lumotlar yuklab olindi!', 'success');
+}
+
+/* =============================================
+   ZOOM
+   ============================================= */
+function openZoom(src) {
+  document.getElementById('zoom-img').src = src;
+  openModal('zoom-modal');
+}
+
+/* =============================================
+   SLIDER
+   ============================================= */
+function slideScroll(trackId, dir) {
+  const track = document.getElementById(trackId);
+  if (track) track.scrollBy({ left: dir * 340, behavior: 'smooth' });
+}
+
+/* =============================================
+   ADMIN AUTH
+   ============================================= */
+function openLoginModal() { openModal('login-modal'); }
+
+function doLogin() {
+  const user = (document.getElementById('login-user').value || '').trim();
+  const pass = (document.getElementById('login-pass').value || '').trim();
+  const errEl = document.getElementById('login-err');
+  if (user === DB.auth.username && pass === DB.auth.password) {
+    errEl.style.display = 'none';
+    closeModal('login-modal');
+    openAdminPanel();
+  } else {
+    errEl.style.display = 'block';
+    document.getElementById('login-pass').value = '';
+    document.getElementById('login-pass').focus();
+  }
+}
+
+function openAdminPanel() {
+  const panel = document.getElementById('admin-panel');
+  panel.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  
+  renderHero();
+  renderCourses();
+  renderAdminResultsList();
+  renderAdminNewsList();
+  renderAdminProcessList();
+  renderAdminWhyList();
+  renderAdminComments();
+  renderLeadsList();
+  renderDashboard();
+  renderSettings();
+}
+
+function logoutAdmin() {
+  document.getElementById('admin-panel').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* =============================================
+   ADMIN TABS
+   ============================================= */
+document.getElementById('admin-tabs').addEventListener('click', function(e) {
+  const tab = e.target.closest('.admin-tab');
+  if (!tab) return;
+  const tabId = tab.dataset.tab;
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  const pane = document.getElementById(tabId);
+  if (pane) pane.classList.add('active');
+  
+  if (tabId === 't-dashboard') renderDashboard();
+  if (tabId === 't-leads') renderLeadsList();
+  if (tabId === 't-comments') renderAdminComments();
+  if (tabId === 't-results') renderAdminResultsList();
+  if (tabId === 't-news') renderAdminNewsList();
+  if (tabId === 't-process') renderAdminProcessList();
+  if (tabId === 't-why') renderAdminWhyList();
+  if (tabId === 't-settings') renderSettings();
+});
+
+/* =============================================
+   KEYBOARD
+   ============================================= */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal.open').forEach(m => m.classList.remove('open'));
+    if (!document.getElementById('admin-panel').classList.contains('open')) {
+      document.body.style.overflow = '';
+    }
+  }
+});
+
+/* =============================================
+   RENDER ALL
+   ============================================= */
+function renderAll() {
+  renderHero();
+  renderCourses();
+  renderResults();
+  renderNews();
+  renderProcess(); 
+  renderWhy();
+  renderSettings();
+}
+
+/* =============================================
+   INIT
+   ============================================= */
+async function init() {
+  try {
+    await loadFromIndexedDB();
+    renderAll();
+    checkFirstVisit();
+    hideLoading();
+    console.log('✅ Sayt muvaffaqiyatli yuklandi!');
+  } catch (error) {
+    console.error('❌ Yuklashda xato:', error);
+    renderAll();
+    checkFirstVisit();
+    hideLoading();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
+
+
+
+
+
