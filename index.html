@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Azamat Davronov | Elite English Academy</title>
@@ -1595,7 +1598,25 @@ footer{
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
+
 <script>
+
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBPZ9pT9PAAyfQb6iFSowz75LEO7cymXqM",
+  authDomain: "behruz-78bca.firebaseapp.com",
+  databaseURL: "https://behruz-78bca-default-rtdb.firebaseio.com",
+  projectId: "behruz-78bca",
+  storageBucket: "behruz-78bca.firebasestorage.app",
+  messagingSenderId: "627664341666",
+  appId: "1:627664341666:web:0450c4eadb9b1458b765fb",
+  measurementId: "G-E8TN3LDT7R"
+};
+
+// Firebaseni ishga tushirish
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 /* =============================================
    INDEXEDDB - CHEKSIZ MA'LUMOT SAQLASH TIZIMI
    ============================================= */
@@ -1604,8 +1625,20 @@ const DB_VERSION = 1;
 const STORE_NAME = "siteData";
 const DATA_KEY = "main_data";
 
-let db = null;
+let localDB = null;
 
+async function loadDBFromLocal() {
+  const doc = await db.collection('settings').doc('mainData').get();
+  if (doc.exists) {
+    Object.assign(DB, doc.data());
+  }
+  renderAll(); // Saytni chizish
+}
+
+async function saveDBToLocal() {
+  await db.collection('settings').doc('mainData').set(DB);
+  console.log("Firebase-ga saqlandi!");
+}
 // Default ma'lumotlar
 const DEFAULT_DATA = {
   hero: {
@@ -1866,6 +1899,7 @@ function handleFileUpload(input, boxId, prevId, storeKey) {
   
   reader.readAsDataURL(file);
 }
+
 
 /* =============================================
    HEADER / NAV
